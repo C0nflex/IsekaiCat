@@ -9,7 +9,7 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     public enum Direction { Left, Right };
     protected float COOLDOWN;
     protected float SPEED;
-    protected GameObject player; //change it from serialize
+    protected playerInputs player; //change it from serialize
     protected GameObject attackPoint;
     protected TextMeshProUGUI healthText;
     protected Vector2 knockBack;
@@ -33,7 +33,7 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     }
     protected virtual void Start()
     {
-        player = playerInputs.Instance.gameObject;
+        player = playerInputs.instance;
         StartCoroutine(AttackOnCooldown());
 
     }
@@ -42,7 +42,8 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     protected virtual void Update()
     {
         Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, SPEED * Time.deltaTime);
+        if(player != null)
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, SPEED * Time.deltaTime);
         healthText.text = health._currentHealth.ToString(); //gotta change that with TakeDamage
     }
 }
