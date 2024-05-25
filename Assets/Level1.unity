@@ -3145,7 +3145,6 @@ GameObject:
   - component: {fileID: 972963393}
   - component: {fileID: 972963395}
   - component: {fileID: 972963394}
-  - component: {fileID: 972963396}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3269,20 +3268,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972963392}
   m_CullTransparentMesh: 1
---- !u!114 &972963396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972963392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652d6364875ee5c418d5a4ae2e1e5469, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiText: {fileID: 0}
-  newFont: {fileID: 12800000, guid: 944285c02b1a93c44bdc2e42d95c78a8, type: 3}
 --- !u!1 &994913227
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,9 +4340,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1824767698914227234, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.984375
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824767698914227234, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.640625
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824767698914227234, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1347011309, guid: 09b07b3d63996d54f83ff58c21c0b244, type: 3}
+      objectReference: {fileID: 1509895390, guid: f4359883cd3a389409c7d02ce822287b, type: 3}
+    - target: {fileID: 1824767698914227234, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824767698914227234, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3998974443322826445, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_Radius
       value: 0.14248466

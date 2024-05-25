@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        EventManager.OnTimerStart();
+        //EventManager.OnTimerStart();
     }
 
     // Update is called once per frame
