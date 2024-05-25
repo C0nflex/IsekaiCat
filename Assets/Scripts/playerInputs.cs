@@ -33,7 +33,6 @@ public abstract class playerInputs : MonoBehaviour
     private Animator anim;
     public bool IsFacingRight = true;
     private float _fallSpeedYDampingChangeThreshold;
-    private bool isJumping = false;
 
     private Transform stepPos;
     private Transform wallPos;

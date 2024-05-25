@@ -33,7 +33,7 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     }
     protected virtual void Start()
     {
-        player = playerInputs.instance;
+        player = playerInputs.Instance;
         StartCoroutine(AttackOnCooldown());
 
     }
