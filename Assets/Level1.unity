@@ -51958,6 +51958,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 3782255724200218144, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.14585745
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782255724200218144, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5511841
+      objectReference: {fileID: 0}
     - target: {fileID: 3998974443322826445, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_Radius
       value: 0.14248466
@@ -51979,16 +51987,28 @@ PrefabInstance:
       value: 0.09659648
       objectReference: {fileID: 0}
     - target: {fileID: 4820058119146853914, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.984375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4820058119146853914, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.640625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4820058119146853914, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.734375
+      value: 0.984375
       objectReference: {fileID: 0}
     - target: {fileID: 4820058119146853914, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.625
+      value: 0.640625
       objectReference: {fileID: 0}
     - target: {fileID: 4932587304242015912, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_Name
       value: Cat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491815736196426342, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1756
       objectReference: {fileID: 0}
     - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: jumpspeed
@@ -52000,7 +52020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7503783057518220809, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.014
+      value: -3.026
       objectReference: {fileID: 0}
     - target: {fileID: 7503783057518220809, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_LocalPosition.z
