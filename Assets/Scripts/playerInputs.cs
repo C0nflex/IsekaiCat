@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -45,6 +46,11 @@ public abstract class playerInputs : MonoBehaviour
     private float xInput;
     protected float lastGroundedTime;
     protected bool isGoingUpStairs = false;
+    public bool canMove = false;
+
+    private bool gamePause = false;
+
+   
 
 
     private void Awake()
@@ -62,59 +68,76 @@ public abstract class playerInputs : MonoBehaviour
         _fallSpeedYDampingChangeThreshold = cameraManger.Instance._fallSpeedYDamoingChangeThreshold;
         stepPos = transform.Find("TileStepCheck").transform;
         wallPos = transform.Find("WallStepCheck").transform;
+        
         _cameraFollowObject.NewObjectToFollow(transform);
     }
 
     void Update()
     {
-        GetInput();
-        //CheckStep();
-        HandleJump();
-        HandleAbilites();
-        anim.SetFloat("speed", Mathf.Abs(xInput));
-
-        if (_rigidBody.velocity.y < _fallSpeedYDampingChangeThreshold && !cameraManger.Instance.isLerpingYDamping && !cameraManger.Instance.LerpedFromPlayerFalling)
+       
+        if(canMove)
         {
-            cameraManger.Instance.LerpYDamping(true);
-        }
+            GetInput();
+            //CheckStep();
+            HandleJump();
+            HandleAbilites();
+            anim.SetFloat("speed", Mathf.Abs(xInput));
 
-        if (_rigidBody.velocity.y >= 0f && !cameraManger.Instance.isLerpingYDamping && !cameraManger.Instance.LerpedFromPlayerFalling)
-        {
-            cameraManger.Instance.LerpedFromPlayerFalling = false;
+            if (_rigidBody.velocity.y < _fallSpeedYDampingChangeThreshold && !cameraManger.Instance.isLerpingYDamping && !cameraManger.Instance.LerpedFromPlayerFalling)
+            {
+                cameraManger.Instance.LerpYDamping(true);
+            }
 
-            cameraManger.Instance.LerpYDamping(false);
-        }
+            if (_rigidBody.velocity.y >= 0f && !cameraManger.Instance.isLerpingYDamping && !cameraManger.Instance.LerpedFromPlayerFalling)
+            {
+                cameraManger.Instance.LerpedFromPlayerFalling = false;
 
-        #region Timer
-        lastGroundedTime -= Time.deltaTime; ;
-        #endregion
+                cameraManger.Instance.LerpYDamping(false);
+            }
 
-        if (Mathf.Abs(_rigidBody.velocity.y) < jumpHangTimeThreshold)
-        {
-            _rigidBody.gravityScale = gravityScale * jumpHangGravityMultiplier;
-        }
-        else if (_rigidBody.velocity.y < 0)
-        {
-            _rigidBody.gravityScale = gravityScale * fallGravityMultiplier;
-        }
-        else
-        {
-            _rigidBody.gravityScale = gravityScale;
+            #region Timer
+            lastGroundedTime -= Time.deltaTime; ;
+            #endregion
+
+            if (Mathf.Abs(_rigidBody.velocity.y) < jumpHangTimeThreshold)
+            {
+                _rigidBody.gravityScale = gravityScale * jumpHangGravityMultiplier;
+            }
+            else if (_rigidBody.velocity.y < 0)
+            {
+                _rigidBody.gravityScale = gravityScale * fallGravityMultiplier;
+            }
+            else
+            {
+                _rigidBody.gravityScale = gravityScale;
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        CheckGround();
-        //CheckStep();
-        ApplyFriction();
-        MoveWithInput();
-
-        if (xInput != 0)
-        {
-            TurnCheck();
-        }
         
+            CheckGround();
+            //CheckStep();
+            ApplyFriction();
+            MoveWithInput();
+
+            if (xInput != 0)
+            {
+                TurnCheck();
+            }
+        
+    }
+
+    public  void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    // Function to disable player movement
+    public  void DisableMovement()
+    {
+        canMove = false;
     }
 
     private void HandleAbilites()
