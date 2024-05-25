@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 
 public abstract class playerInputs : MonoBehaviour
 {
+    public static playerInputs Instance;
     [Header("RUN")]
     [SerializeField] public float speed;
     [SerializeField] private float acceleration;
@@ -48,9 +49,11 @@ public abstract class playerInputs : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
         gravityScale = _rigidBody.gravityScale;
+        
     }
 
     private void Start()
