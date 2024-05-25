@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - WallCheck
-  - TileCheck
+  - Bounds
   layers:
   - Default
   - TransparentFX

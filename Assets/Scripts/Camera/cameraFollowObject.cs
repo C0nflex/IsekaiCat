@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class cameraFollowObject : MonoBehaviour
 {
-    [SerializeField] private Transform _playerTransform;
+    private Transform _playerTransform;
     [SerializeField] private float _flipYRotationTime = 0.5f;
 
     private Coroutine _turnCoroutine;
@@ -16,8 +16,17 @@ public class cameraFollowObject : MonoBehaviour
 
     private void Awake()
     {
+        NewObjectToFollow(transform);
+    }
+
+    public void NewObjectToFollow(Transform ToFollow)
+    {
+        _playerTransform = ToFollow;
         _playerInputs = _playerTransform.gameObject.GetComponent<playerInputs>();
-        _isFacingRight = _playerInputs.IsFacingRight;
+        if(_playerInputs != null)
+            _isFacingRight = _playerInputs.IsFacingRight;
+        else
+            _isFacingRight = false;
     }
 
 

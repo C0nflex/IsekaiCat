@@ -5,13 +5,12 @@ using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    public Tilemap groundTilemap;
+    public static GameManager Instance;
+    public cameraFollowObject _cameraFollowObject;
     // Start is called before the first frame update
-
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     void Start()
     {

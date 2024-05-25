@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class playerInputs : MonoBehaviour
+public abstract class playerInputs : MonoBehaviour
 {
     [Header("RUN")]
     [SerializeField] public float speed;
@@ -14,28 +14,25 @@ public class playerInputs : MonoBehaviour
     [SerializeField] private float velPower;
     [SerializeField] private float frictionAmount;
     [Header("JUMP")]
-    [SerializeField] public float jumpspeed;
     [SerializeField] private float accelerationInAir;
     [SerializeField] private float deccelerationInAir;
     [SerializeField] private float fallGravityMultiplier;
     [SerializeField] private float jumpCoyoteTime;
-    [SerializeField] private float jumpCutMultiplier;
     [SerializeField] private float jumpHangTimeThreshold;
     [SerializeField] private float jumpHangGravityMultiplier;
     [Header("CHECKS")]
     [SerializeField] private BoxCollider2D groundcheck;
     [SerializeField] LayerMask groundMask;
     [Header("CAMERA")]
-    [SerializeField] private GameObject _cameraFollowGO;
+    [SerializeField] protected LayerMask EnemyLayer;
+    [SerializeField] protected float basicAttackDamage;
+    [SerializeField] protected Vector2 basicAttackKnockback;
     private cameraFollowObject _cameraFollowObject;
-    private Rigidbody2D _rigidBody;
+    protected Rigidbody2D _rigidBody;
     private Animator anim;
     public bool IsFacingRight = true;
     private float _fallSpeedYDampingChangeThreshold;
-    private float lastGroundedTime;
     private bool isJumping = false;
-    private float gravityScale;
-    private float xInput;
 
     private Transform stepPos;
     private Transform wallPos;
@@ -43,11 +40,14 @@ public class playerInputs : MonoBehaviour
     private bool bounce = false;
     //private float moveSpeed = 0.2f; // Horizontal movement speed in units per second
     private float moveDuration = 0.2f; // Duration of movement in seconds
+    protected bool isMidJump = false;
+    private float gravityScale;  
+    private float xInput;
+    protected float lastGroundedTime;
 
 
     private void Awake()
     {
-        _cameraFollowObject = _cameraFollowGO.GetComponent<cameraFollowObject>();
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
         gravityScale = _rigidBody.gravityScale;
@@ -55,15 +55,19 @@ public class playerInputs : MonoBehaviour
 
     private void Start()
     {
+        _cameraFollowObject = GameManager.Instance._cameraFollowObject;
         _fallSpeedYDampingChangeThreshold = cameraManger.Instance._fallSpeedYDamoingChangeThreshold;
         stepPos = transform.Find("TileStepCheck").transform;
         wallPos = transform.Find("WallStepCheck").transform;
+        _cameraFollowObject.NewObjectToFollow(transform);
     }
 
     void Update()
     {
         GetInput();
+        CheckStep();
         HandleJump();
+        HandleAbilites();
         anim.SetFloat("speed", Mathf.Abs(xInput));
 
         if (_rigidBody.velocity.y < _fallSpeedYDampingChangeThreshold && !cameraManger.Instance.isLerpingYDamping && !cameraManger.Instance.LerpedFromPlayerFalling)
@@ -107,6 +111,15 @@ public class playerInputs : MonoBehaviour
         {
             TurnCheck();
         }
+        
+    }
+
+    private void HandleAbilites()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            BasicAttack();
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+            RangedAttack();
     }
 
     private void GetInput()
@@ -132,20 +145,6 @@ public class playerInputs : MonoBehaviour
         _rigidBody.AddForce(movement * Vector2.right);
     }
 
-    private void HandleJump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && lastGroundedTime > 0 && !isJumping)
-        {
-            _rigidBody.AddForce(Vector2.up * jumpspeed, ForceMode2D.Impulse);
-            lastGroundedTime = 0;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space) && _rigidBody.velocity.y > 0)
-        {
-            _rigidBody.AddForce(Vector2.down * _rigidBody.velocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
-        }
-    }
-
     private void ApplyFriction()
     {
         if (anim.GetBool("grounded") && xInput == 0 && _rigidBody.velocity.y <= 0)
@@ -163,9 +162,9 @@ public class playerInputs : MonoBehaviour
         if (anim.GetBool("grounded"))
         {
             lastGroundedTime = jumpCoyoteTime;
-            isJumping = false;
+            isMidJump = false;
         }
-        else isJumping = true;
+        else isMidJump = true;
     }
     /*
     private void CheckStep()
@@ -266,6 +265,15 @@ public class playerInputs : MonoBehaviour
             _cameraFollowObject.CallTurn();
         }
     }
+    protected virtual void Jump()
+    {
+        lastGroundedTime = 0;
+    }
 
+    protected abstract void HandleJump();
+
+    protected abstract void BasicAttack();
+
+    protected abstract void RangedAttack();
 
 }
