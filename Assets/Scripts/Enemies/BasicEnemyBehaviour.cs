@@ -8,8 +8,7 @@ public class BasicEnemyBehaviour : MonoBehaviour
 {
     public enum Direction { Left, Right };
     private const float COOLDOWN = 1f; // attack cooldown 1 second
-    [SerializeField]
-    private GameObject player;
+    private playerInputs player;
     private GameObject prefab;
     private TextMeshProUGUI healthText;
     private int attackDamage;
@@ -39,6 +38,7 @@ public class BasicEnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = playerInputs.instance;
         health = gameObject.GetComponent<Health>();
         prefab = gameObject;
         attackDamage = 20;
@@ -51,7 +51,8 @@ public class BasicEnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z), 1f * Time.deltaTime);
+        if(player != null)
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z), 1f * Time.deltaTime);
         healthText.text = health._currentHealth.ToString();
     }
 }
