@@ -53,7 +53,7 @@ public abstract class playerInputs : MonoBehaviour
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
         gravityScale = _rigidBody.gravityScale;
-        
+
     }
 
     private void Start()
@@ -278,6 +278,14 @@ public abstract class playerInputs : MonoBehaviour
             _cameraFollowObject.CallTurn();
         }
     }
+
+    private void ExitBall()
+    {
+        Vector3 newPos = transform.position;
+        newPos.y += 0.2f;
+        transform.position = newPos;
+    }
+
     protected virtual void Jump()
     {
         lastGroundedTime = 0;
