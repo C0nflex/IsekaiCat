@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BasicEnemyBehaviour : MonoBehaviour
@@ -32,7 +33,7 @@ public class BasicEnemyBehaviour : MonoBehaviour
     }
     private void Attack()
     {
-        if (transform.position.x - player.transform.position.x < 0.5)
+        if (math.abs(transform.position.x - player.transform.position.x) < 0.8)
             player.GetComponent<Health>().TakeDamage(attackDamage, new Vector2(0f,0f));
 
     }
@@ -42,6 +43,7 @@ public class BasicEnemyBehaviour : MonoBehaviour
     {
         Health = 50;
         prefab = gameObject;
+        attackDamage = 20;
         StartCoroutine(AttackEverySecond());
         
     }
