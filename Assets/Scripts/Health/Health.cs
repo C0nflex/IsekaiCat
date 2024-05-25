@@ -21,24 +21,30 @@ public class Health : MonoBehaviour
         _anim = GetComponent<Animator>();
         _rd = GetComponent<Rigidbody2D>();
     }
-    public void TakeDamage(float damage, Vector2 knockback)
+    private int calculateKnockbackDirection(Vector3 damageDealerPos) => (gameObject.transform.position.x - damageDealerPos.x > 0) ? 1 : -1;
+        // returns 1 for right or -1 for left
+    
+    public void TakeDamage(float damage, Vector2 knockback, GameObject damageDealer)
     {
+        int knockbackDirection = calculateKnockbackDirection(damageDealer.transform.position);
         _lastHitDmg = damage;
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _startingHealth);
 
         if (_currentHealth > 0)
         {
-            _anim.SetTrigger("hurt");
+           //_anim.SetTrigger("hurt");
             hurt = true;
-            _rd.velocity = new Vector2(_rd.velocity.x + knockback.x, _rd.velocity.y + knockback.y);
+            _rd.velocity = new Vector2(_rd.velocity.x + knockback.x * knockbackDirection, _rd.velocity.y + knockback.y);
         }
         else
         {
             if (!_Dead)
             {
-                _anim.SetTrigger("die");
+                //_anim.SetTrigger("die");
                 _Dead = true;
             }
+            Destroy(gameObject);
+
         }
     }
 

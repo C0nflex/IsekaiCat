@@ -36,7 +36,9 @@ public class CatInputs : playerInputs
     {
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, EnemyLayer);
         foreach (Collider2D enemy in enemiesHit)
-            enemy.GetComponent<Health>().TakeDamage(basicAttackDamage,basicAttackKnockback);
+        {
+            enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
+        }
     }
 
     protected override void RangedAttack()
