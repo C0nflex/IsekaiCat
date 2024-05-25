@@ -120,7 +120,10 @@ public abstract class playerInputs : MonoBehaviour
     private void HandleAbilites()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
             BasicAttack();
+            anim.SetTrigger("melee");
+        }
         if (Input.GetKeyDown(KeyCode.Mouse1))
             RangedAttack();
     }
