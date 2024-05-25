@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 
 public abstract class playerInputs : MonoBehaviour
 {
+    public static playerInputs Instance;
     [Header("RUN")]
     [SerializeField] public float speed;
     [SerializeField] private float acceleration;
@@ -32,7 +33,6 @@ public abstract class playerInputs : MonoBehaviour
     private Animator anim;
     public bool IsFacingRight = true;
     private float _fallSpeedYDampingChangeThreshold;
-    private bool isJumping = false;
 
     private Transform stepPos;
     private Transform wallPos;
@@ -44,13 +44,16 @@ public abstract class playerInputs : MonoBehaviour
     private float gravityScale;  
     private float xInput;
     protected float lastGroundedTime;
+    protected bool isGoingUpStairs = false;
 
 
     private void Awake()
     {
+        Instance = this;
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
         gravityScale = _rigidBody.gravityScale;
+        
     }
 
     private void Start()
@@ -65,7 +68,7 @@ public abstract class playerInputs : MonoBehaviour
     void Update()
     {
         GetInput();
-        CheckStep();
+        //CheckStep();
         HandleJump();
         HandleAbilites();
         anim.SetFloat("speed", Mathf.Abs(xInput));
@@ -103,7 +106,7 @@ public abstract class playerInputs : MonoBehaviour
     private void FixedUpdate()
     {
         CheckGround();
-        CheckStep();
+        //CheckStep();
         ApplyFriction();
         MoveWithInput();
 
@@ -191,8 +194,8 @@ public abstract class playerInputs : MonoBehaviour
 
     private void CheckStep()
     {
-        var StepcircleBound = Physics2D.OverlapCircle(stepPos.position, 0.001f, groundMask);
-        var WallCircleBound = Physics2D.OverlapCircle(wallPos.position, 0.001f, groundMask);
+        var StepcircleBound = Physics2D.OverlapCircle(stepPos.position, 0.01f, groundMask);
+        var WallCircleBound = Physics2D.OverlapCircle(wallPos.position, 0.01f, groundMask);
 
         if (StepcircleBound != null && WallCircleBound == null && !bounce)
         {
@@ -217,10 +220,16 @@ public abstract class playerInputs : MonoBehaviour
 
         while (elapsedTime < moveDuration)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isGoingUpStairs = true;
+                break;
+            }
             // Interpolate between current and target positions
             float newX = Mathf.Lerp(currentPosition.x, targetX, elapsedTime / moveDuration);
             float newY = Mathf.Lerp(currentPosition.y, targetY, elapsedTime / moveDuration);
             transform.position = new Vector2(newX, newY);
+            
 
             // Increment elapsed time
             elapsedTime += Time.deltaTime;
@@ -230,6 +239,7 @@ public abstract class playerInputs : MonoBehaviour
 
         // Ensure the player reaches the target position exactly
         transform.position = new Vector2(targetX, targetY);
+        isGoingUpStairs = false;
     }
 
 

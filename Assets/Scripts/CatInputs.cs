@@ -15,14 +15,13 @@ public class CatInputs : playerInputs
     [SerializeField] private Vector2 projectileKnockback;
     protected override void HandleJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && lastGroundedTime > 0 && !isMidJump)
+        if ((Input.GetKeyDown(KeyCode.Space) && lastGroundedTime > 0) && !isMidJump || (Input.GetKeyDown(KeyCode.Space) & isGoingUpStairs))
         {
             Jump();
         }
-
         if (Input.GetKeyUp(KeyCode.Space) && _rigidBody.velocity.y > 0)
         {
-            _rigidBody.AddForce(Vector2.down * _rigidBody.velocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
+            //_rigidBody.AddForce(Vector2.down * _rigidBody.velocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
         }
     }
 
