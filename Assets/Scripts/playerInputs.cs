@@ -212,7 +212,7 @@ public abstract class playerInputs : MonoBehaviour
         var roation = 1;
         if ((zRotation % 360) >0) { roation = -1; }
         float targetX = currentPosition.x + (0.2f*roation); // Move 0.2 units to the right
-        float targetY = currentPosition.y + 0.20f;
+        float targetY = currentPosition.y + 0.20f; // and thhis
         float elapsedTime = 0f;
 
         while (elapsedTime < moveDuration)
