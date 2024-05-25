@@ -52084,6 +52084,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 3782255724200218144, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.14585745
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782255724200218144, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5511841
+      objectReference: {fileID: 0}
     - target: {fileID: 3998974443322826445, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_Radius
       value: 0.14248466
@@ -52150,7 +52158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7503783057518220809, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9
+      value: -3.026
       objectReference: {fileID: 0}
     - target: {fileID: 7503783057518220809, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_LocalPosition.z
