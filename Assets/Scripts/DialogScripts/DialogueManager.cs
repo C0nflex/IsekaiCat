@@ -10,8 +10,8 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     private Queue<string> sentences;
-
     public Animator animator;
+    public playerInputs pushP;
 
 
     // Start is called before the first frame update
@@ -58,6 +58,7 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("IsOpen", false);
         EventManager.OnTimerStart();
+        pushP.EnableMovement();
     }
 
 }
