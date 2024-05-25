@@ -27,6 +27,9 @@ public class ProjectileManager : MonoBehaviour
         if (collision.gameObject.tag == "Bounds")
             Destroy(gameObject);
         else if (collision.gameObject.tag == "Enemy")
-            collision.GetComponent<Health>().TakeDamage(damageToDeal, knockbackToDeal);
+        {
+             collision.GetComponent<Health>().TakeDamage(damageToDeal, knockbackToDeal, gameObject);
+            Destroy(gameObject);
+        }
     }
 }

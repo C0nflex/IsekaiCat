@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using TMPro;
 
 public class BasicEnemyBehaviour : MonoBehaviour
 {
@@ -9,14 +11,11 @@ public class BasicEnemyBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject player;
     private GameObject prefab;
-    public int Health { get; private set; }
+    private TextMeshProUGUI healthText;
     private int attackDamage;
     private Direction facingDirection;
+    private Health health;
     
-    public void TakeDamage(int damage)
-    {
-        Health -= damage;
-    }
     private void Die()
     {
 
@@ -32,23 +31,27 @@ public class BasicEnemyBehaviour : MonoBehaviour
     }
     private void Attack()
     {
-        if (transform.position.x - player.transform.position.x < 0.5)
-            player.GetComponent<Health>().TakeDamage(attackDamage, new Vector2(0f,0f));
+        if (math.abs(transform.position.x - player.transform.position.x) < 0.8)
+            player.GetComponent<Health>().TakeDamage(attackDamage, new Vector2(0f,0f), gameObject);
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Health = 50;
+        health = gameObject.GetComponent<Health>();
         prefab = gameObject;
+        attackDamage = 20;
         StartCoroutine(AttackEverySecond());
-        
+        healthText = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        healthText.text = health._currentHealth.ToString();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 1f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z), 1f * Time.deltaTime);
+        healthText.text = health._currentHealth.ToString();
     }
 }
