@@ -4,54 +4,45 @@ using Unity.Mathematics;
 using UnityEngine;
 using TMPro;
 
-public class BasicEnemyBehaviour : MonoBehaviour
+public abstract class BasicEnemyBehaviour : MonoBehaviour
 {
     public enum Direction { Left, Right };
-    private const float COOLDOWN = 1f; // attack cooldown 1 second
-    [SerializeField]
-    private GameObject player;
-    private GameObject prefab;
-    private TextMeshProUGUI healthText;
-    private int attackDamage;
-    private Direction facingDirection;
-    private Health health;
+    protected float COOLDOWN;
+    protected float SPEED;
+    protected GameObject player; //change it from serialize
+    protected GameObject attackPoint;
+    protected TextMeshProUGUI healthText;
+    protected Vector2 knockBack;
+    protected float attackDamage;
+    protected Direction facingDirection;
+    protected Health health;
     
-    private void Die()
+    virtual protected void Die()
     {
-
-        Destroy(prefab);
+        Destroy(gameObject);
     }
-    IEnumerator AttackEverySecond()
-    {
-        while(true)
-        {
-            Attack();
-            yield return new WaitForSeconds(COOLDOWN);
-        }
-    }
-    private void Attack()
-    {
-        if (math.abs(transform.position.x - player.transform.position.x) < 0.8)
-            player.GetComponent<Health>().TakeDamage(attackDamage, new Vector2(0f,0f), gameObject);
-
-    }
+    abstract protected IEnumerator AttackOnCooldown();
+    abstract protected void Attack();
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Awake()
     {
         health = gameObject.GetComponent<Health>();
-        prefab = gameObject;
-        attackDamage = 20;
-        StartCoroutine(AttackEverySecond());
+        attackPoint = transform.Find("AttackPointEnemy").gameObject;
         healthText = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-        healthText.text = health._currentHealth.ToString();
+    }
+    protected virtual void Start()
+    {
+        player = playerInputs.Instance.gameObject;
+        StartCoroutine(AttackOnCooldown());
 
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z), 1f * Time.deltaTime);
-        healthText.text = health._currentHealth.ToString();
+        Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, SPEED * Time.deltaTime);
+        healthText.text = health._currentHealth.ToString(); //gotta change that with TakeDamage
     }
 }
