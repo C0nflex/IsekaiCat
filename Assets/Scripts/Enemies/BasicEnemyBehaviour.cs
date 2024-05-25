@@ -33,7 +33,7 @@ public class BasicEnemyBehaviour : MonoBehaviour
     private void Attack()
     {
         if (transform.position.x - player.transform.position.x < 0.5)
-            player.GetComponent<Health>().TakeDamage(attackDamage, new Vector2(0.5f, 0.5f));
+            player.GetComponent<Health>().TakeDamage(attackDamage, new Vector2(0f,0f));
 
     }
 
