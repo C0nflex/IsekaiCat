@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ac7ab6cf36b6e90419637fa3c1e38fcb
+guid: 5c599f549f10200458dbbb70007626c3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ground tiles_0
+      name: ground_tiles_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38166af9fa7255e439013f185371a399
-      internalID: 1881782410
+      spriteID: bc586fccef9aaa84fbb8a921dff1b61f
+      internalID: 1635701671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground tiles_1
+      name: ground_tiles_1
       rect:
         serializedVersion: 2
         x: 16
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c4941119917b4844b39561a47ab2aa7
-      internalID: 82499996
+      spriteID: 9ed833ab094df1643a5d297bc2fd8464
+      internalID: -1813132906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground tiles_2
+      name: ground_tiles_2
       rect:
         serializedVersion: 2
         x: 32
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c28f5a8c1c80b2d4da881499bded9d45
-      internalID: -2126270273
+      spriteID: f75f6283817b89b4b8cf779d926e4b5e
+      internalID: 899118525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground tiles_3
+      name: ground_tiles_3
       rect:
         serializedVersion: 2
         x: 0
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdd33d30d29278b41bf19688be618ca6
-      internalID: 262902503
+      spriteID: 782f8ea9f2ffdf44484a41d2654c957f
+      internalID: -1495638090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground tiles_4
+      name: ground_tiles_4
       rect:
         serializedVersion: 2
         x: 16
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3c33beb694f46748a30305e51e9e5c5
-      internalID: -552108903
+      spriteID: 8d2dedf1991461a479cb3a6b4bca394a
+      internalID: -873221626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground tiles_5
+      name: ground_tiles_5
       rect:
         serializedVersion: 2
         x: 32
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 537d8d0426c02094d818d2fcf0cadbbc
-      internalID: -1266873859
+      spriteID: e8c7254b7aca4c54db9ee2f05023fdfa
+      internalID: 571957221
       vertices: []
       indices: 
       edges: []
@@ -233,12 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ground tiles_0: 1881782410
-      ground tiles_1: 82499996
-      ground tiles_2: -2126270273
-      ground tiles_3: 262902503
-      ground tiles_4: -552108903
-      ground tiles_5: -1266873859
+      ground_tiles_0: 1635701671
+      ground_tiles_1: -1813132906
+      ground_tiles_2: 899118525
+      ground_tiles_3: -1495638090
+      ground_tiles_4: -873221626
+      ground_tiles_5: 571957221
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
