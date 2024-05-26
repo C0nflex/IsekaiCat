@@ -54,7 +54,7 @@ public abstract class playerInputs : MonoBehaviour
     protected bool isGoingUpStairs = false;
     public bool canMove = false;
 
-    private bool gamePause = false;
+    
     public ParticleSystem rangedAttackParticles;
 
 
