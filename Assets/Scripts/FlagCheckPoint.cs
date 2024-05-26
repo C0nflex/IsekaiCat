@@ -50,7 +50,6 @@ public class FlagCheckPoint : MonoBehaviour
     void InteractWithFlag()
     {
         //player2.GetComponent<playerInputs>().setPlayerCheckPoint
-        Debug.Log(transform.position);
         playerInputs.Instance.setPlayerCheckPoint(gameObject.transform.position);
     }
 }
