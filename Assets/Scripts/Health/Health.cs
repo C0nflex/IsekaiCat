@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class Health : MonoBehaviour
 {
+    public EventHandler onHurt;
     [SerializeField] public float _startingHealth;
     public float _currentHealth { get; private set; }
     private float _lastHitDmg;
@@ -29,6 +31,7 @@ public class Health : MonoBehaviour
         int knockbackDirection = calculateKnockbackDirection(damageDealer.transform.position);
         _lastHitDmg = damage;
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _startingHealth);
+        
 
         if (_currentHealth > 0)
         {
@@ -46,6 +49,7 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
 
         }
+        onHurt?.Invoke(this, new EventArgs { });
     }
 
     public void TakeDamageNoAnimation(float damage, Vector2 knockback)

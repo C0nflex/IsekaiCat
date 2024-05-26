@@ -29,7 +29,7 @@ public abstract class playerInputs : MonoBehaviour
     [Header("CAMERA")]
     [SerializeField] protected LayerMask EnemyLayer;
     [SerializeField] protected float basicAttackDamage;
-    [SerializeField] protected Vector2 basicAttackKnockback;
+    [SerializeField] public Vector2 basicAttackKnockback;
     private cameraFollowObject _cameraFollowObject;
     protected Rigidbody2D _rigidBody;
     private Animator anim;

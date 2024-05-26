@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -59,6 +60,5 @@ public class Ogre : BasicEnemyBehaviour
     protected override void Update()
     {
         base.Update();
-
     }
 }

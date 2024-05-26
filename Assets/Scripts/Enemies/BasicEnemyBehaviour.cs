@@ -27,7 +27,14 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    abstract protected IEnumerator AttackOnCooldown();
+    virtual protected IEnumerator AttackOnCooldown()
+    {
+        while (true)
+        {
+            Attack();
+            yield return new WaitForSeconds(COOLDOWN);
+        }
+    }
     abstract protected void Attack();
 
     // Start is called before the first frame update
@@ -52,6 +59,7 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
         else
         {
             facingDirection = Direction.Left;
+            Flip();
         }
         StartCoroutine(AttackOnCooldown());
     }
@@ -59,18 +67,9 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (canMove)
+        if (canMove && objectRenderer.isVisible && player != null)
         {
-            if (objectRenderer.isVisible)
-            {
-                Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-
-                if (player != null)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, targetPosition, SPEED * Time.deltaTime);
-                    MoveTowardsTarget(targetPosition);
-                }
-            }
+            MoveTowardsTarget();
         }
     }
     private bool IsGrounded()
@@ -79,9 +78,9 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
         return hit.collider != null;
     }
-    protected virtual void MoveTowardsTarget(Vector3 targetPosition)
+    protected virtual void MoveTowardsTarget()
     {
-
+        Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         var StepcircleBound = Physics2D.OverlapCircle(stepCheck.transform.position, 0.001f, groundMask);
         var WallCircleBound = Physics2D.OverlapCircle(wallCheck.transform.position, 0.001f, groundMask);
         if (StepcircleBound != null && WallCircleBound == null && !bounce)
@@ -96,7 +95,10 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
             bounce = false;
         }
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, SPEED * Time.deltaTime);
-
+        Flip(targetPosition);
+    }
+    protected void Flip(Vector3 targetPosition)
+    {
         // Check if the target position is to the left and the current facing direction is right
         if (targetPosition.x < transform.position.x && facingDirection == Direction.Right)
         {
@@ -112,7 +114,7 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
             Flip();
         }
     }
-    void Flip()
+    protected virtual void Flip()
     {
         // Flip the localRotation.y by setting the correct Euler angles
         if (facingDirection == Direction.Right)
