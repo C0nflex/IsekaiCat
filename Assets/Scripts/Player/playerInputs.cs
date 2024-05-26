@@ -17,6 +17,8 @@ public abstract class playerInputs : MonoBehaviour
     [SerializeField] private float velPower;
     [SerializeField] private float frictionAmount;
     [Header("JUMP")]
+    [SerializeField] private float jumpCooldown;
+    protected bool jumpOnCooldown = false;
     [SerializeField] private float accelerationInAir;
     [SerializeField] private float deccelerationInAir;
     [SerializeField] private float fallGravityMultiplier;
@@ -47,15 +49,13 @@ public abstract class playerInputs : MonoBehaviour
     private bool bounce = false;
     //private float moveSpeed = 0.2f; // Horizontal movement speed in units per second
     private float moveDuration = 0.2f; // Duration of movement in seconds
-    protected bool isMidJump = false;
-    private float gravityScale;  
+    public bool isMidJump = false;
+    protected float gravityScale;  
     private float xInput;
     protected float lastGroundedTime;
     protected bool isGoingUpStairs = false;
     public bool canMove = false;
-
-    private bool gamePause = false;
-
+    private bool isGrounded = false;
    
 
 
@@ -107,17 +107,27 @@ public abstract class playerInputs : MonoBehaviour
 
             if (Mathf.Abs(_rigidBody.velocity.y) < jumpHangTimeThreshold)
             {
-                _rigidBody.gravityScale = gravityScale * jumpHangGravityMultiplier;
+                InHangTime();
             }
             else if (_rigidBody.velocity.y < 0)
             {
-                _rigidBody.gravityScale = gravityScale * fallGravityMultiplier;
+                InFallTime();
             }
             else
             {
                 _rigidBody.gravityScale = gravityScale;
             }
         }
+    }
+
+    protected virtual void InHangTime()
+    {
+        _rigidBody.gravityScale = gravityScale * jumpHangGravityMultiplier;
+    }
+
+    protected virtual void InFallTime()
+    {
+        _rigidBody.gravityScale = gravityScale * fallGravityMultiplier;
     }
 
     private void FixedUpdate()
@@ -193,15 +203,29 @@ public abstract class playerInputs : MonoBehaviour
 
     private void CheckGround()
     {
-        foreach(var groundMask in groundMasks)
-            anim.SetBool("grounded", Physics2D.OverlapAreaAll(groundcheck.bounds.min, groundcheck.bounds.max, groundMask).Length > 0);
+        foreach (var groundMask in groundMasks)
+            if (Physics2D.OverlapAreaAll(groundcheck.bounds.min, groundcheck.bounds.max, groundMask).Length > 0)
+                Grounded();
+            else
+            {
+                isGrounded = false;
+                anim.SetBool("grounded", false);
+            }
 
-        if (anim.GetBool("grounded"))
+        if (isGrounded)
         {
             lastGroundedTime = jumpCoyoteTime;
             isMidJump = false;
+            
         }
-        else isMidJump = true;
+        else
+            isMidJump = true;
+    }
+
+    protected virtual void Grounded()
+    {
+        isGrounded = true;
+        anim.SetBool("grounded", true);
     }
     /*
     private void CheckStep()
@@ -320,7 +344,10 @@ public abstract class playerInputs : MonoBehaviour
     protected virtual void Jump()
     {
         lastGroundedTime = 0;
+        isMidJump = true;
+        StartCoroutine(JumpCooldown());
     }
+
 
     protected abstract void HandleJump();
 
@@ -334,6 +361,13 @@ public abstract class playerInputs : MonoBehaviour
         StartCoroutine(RangedAttackCooldown());
     }
 
+    protected IEnumerator JumpCooldown()
+    {
+        jumpOnCooldown = true;
+        yield return new WaitForSeconds(jumpCooldown);
+        jumpOnCooldown = false;
+    }
+
     protected IEnumerator BasicAttackCooldown()
     {
         basicAttackOnCooldown  = true;
@@ -344,7 +378,7 @@ public abstract class playerInputs : MonoBehaviour
     protected IEnumerator RangedAttackCooldown()
     {
         rangedAttackOnCooldown = true;
-        yield return new WaitForSeconds(basicAttackCooldown);
+        yield return new WaitForSeconds(rangedAttackCooldown);
         rangedAttackOnCooldown = false;
     }
 

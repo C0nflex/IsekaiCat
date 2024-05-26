@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3700388843107460030}
   - component: {fileID: 4237089181392919433}
-  - component: {fileID: 3623541566693212927}
   - component: {fileID: 1298043196375651531}
   - component: {fileID: 7770376775911503716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 581de8bf4c4eb914298432f432140059, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,21 +83,9 @@ SpriteRenderer:
   m_Size: {x: 9.36, y: 8.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3623541566693212927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555134952605718569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf1ed7e9f90f9364ea79bd3cefb14afd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &1298043196375651531
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -150,7 +137,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8626dab9d007b784cac41fca07ae1ec7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

@@ -13,9 +13,10 @@ public class CatInputs : playerInputs
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float projectileDamage;
     [SerializeField] private Vector2 projectileKnockback;
+    [SerializeField] private float projectileGravity;
     protected override void HandleJump()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) && lastGroundedTime > 0) && !isMidJump || (Input.GetKeyDown(KeyCode.Space) & isGoingUpStairs))
+        if (!jumpOnCooldown && ((Input.GetKeyDown(KeyCode.Space) && lastGroundedTime > 0) && !isMidJump || (Input.GetKeyDown(KeyCode.Space) & isGoingUpStairs)))
         {
             Jump();
         }
@@ -44,8 +45,10 @@ public class CatInputs : playerInputs
     protected override void RangedAttack()
     {
         var ProjectileSpawned = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-        ProjectileSpawned.GetComponent<ProjectileManager>().Init(IsFacingRight ? new Vector3(1, 0, 0) : new Vector3(-1, 0, 0),
-            projectileSpeed,projectileDamage, projectileKnockback);
+        print(Input.mousePosition);
+        var direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+        direction = new Vector3(direction.x, direction.y, transform.position.z).normalized;
+        ProjectileSpawned.GetComponent<ProjectileManager>().Init(direction,projectileSpeed,projectileDamage, projectileKnockback, projectileGravity);
         base.RangedAttack();
     }
 

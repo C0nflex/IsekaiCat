@@ -22,8 +22,7 @@ public class Health : MonoBehaviour
         _rd = GetComponent<Rigidbody2D>();
     }
     private int calculateKnockbackDirection(Vector3 damageDealerPos) => (gameObject.transform.position.x - damageDealerPos.x > 0) ? 1 : -1;
-        // returns 1 for right or -1 for left
-    
+    // returns 1 for right or -1 for left
     public void TakeDamage(float damage, Vector2 knockback, GameObject damageDealer)
     {
         int knockbackDirection = calculateKnockbackDirection(damageDealer.transform.position);
