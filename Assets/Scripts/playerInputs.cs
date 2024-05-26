@@ -55,8 +55,9 @@ public abstract class playerInputs : MonoBehaviour
     public bool canMove = false;
 
     private bool gamePause = false;
+    public ParticleSystem rangedAttackParticles;
 
-   
+
 
 
     private void Awake()
@@ -343,9 +344,11 @@ public abstract class playerInputs : MonoBehaviour
 
     protected IEnumerator RangedAttackCooldown()
     {
+        rangedAttackParticles.gameObject.SetActive(false);
         rangedAttackOnCooldown = true;
         yield return new WaitForSeconds(basicAttackCooldown);
         rangedAttackOnCooldown = false;
+        rangedAttackParticles.gameObject.SetActive(true);
     }
 
 }
