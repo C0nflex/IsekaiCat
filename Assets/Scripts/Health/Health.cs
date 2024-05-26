@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     public bool hurt = false;
 
     // Regeneration settings
-    [SerializeField] private float regenRate = 2f; // Health points to regenerate per interval
+    [SerializeField] private float regenRate = 4f; // Health points to regenerate per interval
     [SerializeField] private float regenInterval = 1f; // Time in seconds between each regeneration tick
 
     private void Awake()

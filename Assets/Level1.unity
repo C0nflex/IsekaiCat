@@ -132360,16 +132360,20 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: basicAttackCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: rangedAttackParticles
       value: 
       objectReference: {fileID: 1023019042}
     - target: {fileID: 7503783057518220809, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 54.4
+      value: -8.9
       objectReference: {fileID: 0}
     - target: {fileID: 7503783057518220809, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30.4
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 7503783057518220809, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_LocalPosition.z
