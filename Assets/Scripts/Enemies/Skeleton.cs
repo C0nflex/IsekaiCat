@@ -21,12 +21,12 @@ public class Skeleton : BasicEnemyBehaviour
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
         //skeleton stats
         COOLDOWN = 1f;
         SPEED = 1f;
         attackDamage = 20f;
         health._startingHealth = 100f;
+        base.Start();
     }
 
     // Update is called once per frame

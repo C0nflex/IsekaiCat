@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ad12aaf072e452e4097f1bb9999dae21
+guid: d377a6aa075e7b248bca880d9cf0bd77
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,34 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: goblin-attack_1
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4b7e47394efd1f4394ddb04fe96fb38
-      internalID: 106464463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goblin-attack_0
+      name: Bat-frames_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 50
-        height: 50
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +111,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4e77df2f4e73aa46a37d0a10cb0eca3
-      internalID: 1170096989
+      spriteID: 5d9db909a1cba114fa3d6c966458560b
+      internalID: -715226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblin-attack_2
+      name: Bat-frames_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f2b1f0b475aed340b7205f92f5c9e95
+      internalID: -1430107374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bat-frames_2
       rect:
         serializedVersion: 2
         x: 100
         y: 0
         width: 50
-        height: 50
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c0a4dc2fcb09644e8bda534b7dde21f
-      internalID: 127177269
+      spriteID: a2f6b4db24e680743a4bf786c720b53f
+      internalID: 1709745051
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblin-attack_3
+      name: Bat-frames_3
       rect:
         serializedVersion: 2
         x: 150
         y: 0
         width: 50
-        height: 50
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,29 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db9b239f8e5d6c6469b0c1e15a24ea6c
-      internalID: 278489866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goblin-attack_4
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e1ed626a86f9054dbeca7874e0345cf
-      internalID: 1685140379
+      spriteID: 3b8c93cc78247cd439a87e20e92f57d8
+      internalID: 219842169
       vertices: []
       indices: 
       edges: []
@@ -212,11 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      goblin-attack_0: 1170096989
-      goblin-attack_1: 106464463
-      goblin-attack_2: 127177269
-      goblin-attack_3: 278489866
-      goblin-attack_4: 1685140379
+      Bat-frames_0: -715226
+      Bat-frames_1: -1430107374
+      Bat-frames_2: 1709745051
+      Bat-frames_3: 219842169
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
