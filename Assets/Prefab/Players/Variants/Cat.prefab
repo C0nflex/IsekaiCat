@@ -47,9 +47,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.371
+  m_FalloffIntensity: 0.207
   m_Color: {r: 0.3485226, g: 0.4809953, b: 0.8301887, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 0.7
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000719de98c
@@ -70,8 +70,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.1
-  m_PointLightOuterRadius: 0.5
+  m_PointLightInnerRadius: 0.4
+  m_PointLightOuterRadius: 1
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -154,7 +154,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: jumpspeed
-      value: 7.5
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: EnemyLayer.m_Bits
@@ -163,6 +163,14 @@ PrefabInstance:
     - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: basicAttackDamage
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: basicAttackCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: rangedAttackCooldown
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: projectileKnockback.x
@@ -180,17 +188,29 @@ PrefabInstance:
       propertyPath: basicAttackKnockback.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: groundMasks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: groundMasks.Array.data[0].m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: groundMasks.Array.data[1].m_Bits
+      value: 136
+      objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.228
+      value: 52.45
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.791
+      value: 19.61
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.004500015
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -229,12 +249,20 @@ PrefabInstance:
       value: 0.09659648
       objectReference: {fileID: 0}
     - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.984375
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.640625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.734375
+      value: 0.984375
       objectReference: {fileID: 0}
     - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.625
+      value: 0.640625
       objectReference: {fileID: 0}
     - target: {fileID: 2727767028687576215, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Name
@@ -243,6 +271,18 @@ PrefabInstance:
     - target: {fileID: 3285431991547402329, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.192
+      objectReference: {fileID: 0}
+    - target: {fileID: 4759829073001515297, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184478197189721119, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.14585745
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184478197189721119, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5511841
       objectReference: {fileID: 0}
     - target: {fileID: 6256025158832565490, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Radius
@@ -257,9 +297,17 @@ PrefabInstance:
       value: -0.17353296
       objectReference: {fileID: 0}
     - target: {fileID: 8717855211577919005, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.984375
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717855211577919005, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.640625
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717855211577919005, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1347011309, guid: 09b07b3d63996d54f83ff58c21c0b244, type: 3}
+      objectReference: {fileID: 1509895390, guid: f4359883cd3a389409c7d02ce822287b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
