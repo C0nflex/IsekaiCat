@@ -14,6 +14,8 @@ public class DialogueManager : MonoBehaviour
     public playerInputs pushP;
 
     private BasicEnemyBehaviour[] allEnemies;
+    [SerializeField]
+    private GameObject mainMenuContainer;
 
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        mainMenuContainer.SetActive(false);
         animator.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
         sentences.Clear();
