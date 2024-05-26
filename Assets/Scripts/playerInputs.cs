@@ -301,7 +301,10 @@ public abstract class playerInputs : MonoBehaviour
         isGoingUpStairs = false;
     }
 
-
+    public void setPlayerCheckPoint(Vector2 flagPoint)
+    {
+        startPos = flagPoint;
+    }
 
     private void TurnCheck()
     {
