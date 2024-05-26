@@ -14,32 +14,20 @@ public class Ogre : BasicEnemyBehaviour
         if (math.abs(attackPoint.transform.position.x - player.transform.position.x) < 0.8 &&
             math.abs(attackPoint.transform.position.y - player.transform.position.y) < 0.8)
             player.GetComponent<Health>().TakeDamage(attackDamage, knockBack, gameObject);
-        animator.SetTrigger("OgreAttack");
+        
+    }
+    private void PerformAttack()
+    {
+        Attack();
     }
     protected override IEnumerator AttackOnCooldown()
     {
-        System.Random rand = new System.Random();
-        int choice = rand.Next() % 1;
         while (true)
         {
-            if (choice == 0)
-            {
-                Attack();
-                COOLDOWN = 1.5f;
-            }
-            else
-            {
-                throwBat();
-                COOLDOWN = 3f;
-            }
-                yield return new WaitForSeconds(COOLDOWN);
+            yield return new WaitForSeconds(COOLDOWN);
+            animator.SetTrigger("OgreAttack");
         }
     }
-    private void throwBat()
-    {
-
-    }
-
     protected override void Awake()
     {
         base.Awake();
@@ -48,7 +36,7 @@ public class Ogre : BasicEnemyBehaviour
     protected override void Start()
     {
         //ogre stats
-        COOLDOWN = 1f;
+        COOLDOWN = 1.5f;
         SPEED = 0.7f;
         attackDamage = 30f;
         health._startingHealth = 150f;
