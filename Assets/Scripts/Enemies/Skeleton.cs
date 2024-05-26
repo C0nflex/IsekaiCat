@@ -27,8 +27,7 @@ public class Skeleton : BasicEnemyBehaviour
         SPEED = 1f;
         attackDamage = 20f;
         health._startingHealth = 100f;
-
-        healthText.text = health._currentHealth.ToString();
+        facingDirection = Direction.Left;
     }
 
     // Update is called once per frame
