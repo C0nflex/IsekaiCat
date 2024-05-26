@@ -14,6 +14,12 @@ public class DialogueManager : MonoBehaviour
     public playerInputs pushP;
 
     private BasicEnemyBehaviour[] allEnemies;
+    [SerializeField]
+    private GameObject mainMenuContainer;
+
+    //public List<AudioClip> sentenceAudioClips;
+    [SerializeField] private List<AudioClip> voiceLines;
+    private AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -21,10 +27,13 @@ public class DialogueManager : MonoBehaviour
     {
         allEnemies = FindObjectsOfType<BasicEnemyBehaviour>();
         sentences = new Queue<string>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = voiceLines[0];
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
+        mainMenuContainer.SetActive(false);
         animator.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
         sentences.Clear();
@@ -49,16 +58,32 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence)
     {
+        //audioSource.Play();
+        int sentenceIndex = sentences.Count;
+        if (sentenceIndex < voiceLines.Count && voiceLines[sentenceIndex] != null)
+        {
+            audioSource.clip = voiceLines[sentenceIndex];
+            audioSource.Play();
+        }
         dialogueText.text = "";
         foreach(char c in sentence.ToCharArray())
         {
             dialogueText.text += c;
             yield return null;
         }
+
+        while (audioSource.isPlaying)
+        {
+            yield return null;
+        }
     }
 
     void EndDialogue()
     {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
         animator.SetBool("IsOpen", false);
         EventManager.OnTimerStart();
         pushP.EnableMovement();
