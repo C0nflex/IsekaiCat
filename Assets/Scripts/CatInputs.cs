@@ -38,6 +38,7 @@ public class CatInputs : playerInputs
         {
             enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
         }
+        base.BasicAttack();
     }
 
     protected override void RangedAttack()
@@ -45,6 +46,7 @@ public class CatInputs : playerInputs
         var ProjectileSpawned = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         ProjectileSpawned.GetComponent<ProjectileManager>().Init(IsFacingRight ? new Vector3(1, 0, 0) : new Vector3(-1, 0, 0),
             projectileSpeed,projectileDamage, projectileKnockback);
+        base.RangedAttack();
     }
 
     
