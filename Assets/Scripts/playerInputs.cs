@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
@@ -24,7 +25,7 @@ public abstract class playerInputs : MonoBehaviour
     [SerializeField] private float jumpHangGravityMultiplier;
     [Header("CHECKS")]
     [SerializeField] private BoxCollider2D groundcheck;
-    [SerializeField] LayerMask groundMask;
+    [SerializeField] List<LayerMask> groundMasks;
     [Header("CAMERA")]
     [SerializeField] protected LayerMask EnemyLayer;
     [SerializeField] protected float basicAttackDamage;
@@ -187,7 +188,9 @@ public abstract class playerInputs : MonoBehaviour
 
     private void CheckGround()
     {
-        anim.SetBool("grounded", Physics2D.OverlapAreaAll(groundcheck.bounds.min, groundcheck.bounds.max, groundMask).Length > 0);
+        foreach(var groundMask in groundMasks)
+            anim.SetBool("grounded", Physics2D.OverlapAreaAll(groundcheck.bounds.min, groundcheck.bounds.max, groundMask).Length > 0);
+
         if (anim.GetBool("grounded"))
         {
             lastGroundedTime = jumpCoyoteTime;
@@ -220,8 +223,8 @@ public abstract class playerInputs : MonoBehaviour
 
     private void CheckStep()
     {
-        var StepcircleBound = Physics2D.OverlapCircle(stepPos.position, 0.01f, groundMask);
-        var WallCircleBound = Physics2D.OverlapCircle(wallPos.position, 0.01f, groundMask);
+        var StepcircleBound = Physics2D.OverlapCircle(stepPos.position, 0.01f, groundMasks[0]);
+        var WallCircleBound = Physics2D.OverlapCircle(wallPos.position, 0.01f, groundMasks[0]);
 
         if (StepcircleBound != null && WallCircleBound == null && !bounce)
         {

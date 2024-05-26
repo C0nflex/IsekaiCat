@@ -50,7 +50,6 @@ public class Ogre : BasicEnemyBehaviour
         SPEED = 0.7f;
         attackDamage = 30f;
         health._startingHealth = 150f;
-        facingDirection = Direction.Left;
     }
 
     // Update is called once per frame

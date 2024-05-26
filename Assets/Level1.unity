@@ -605,11 +605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7310501991081179644, guid: fe6697a1acb42914691ea445292d3a37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.24893689
+      value: -3.49
       objectReference: {fileID: 0}
     - target: {fileID: 7310501991081179644, guid: fe6697a1acb42914691ea445292d3a37, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0849452
+      value: -2.866
       objectReference: {fileID: 0}
     - target: {fileID: 7310501991081179644, guid: fe6697a1acb42914691ea445292d3a37, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51009,11 +51009,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7310501991081179644, guid: fe6697a1acb42914691ea445292d3a37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.97
+      value: 4.35
       objectReference: {fileID: 0}
     - target: {fileID: 7310501991081179644, guid: fe6697a1acb42914691ea445292d3a37, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.86
+      value: 2.74
       objectReference: {fileID: 0}
     - target: {fileID: 7310501991081179644, guid: fe6697a1acb42914691ea445292d3a37, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51853,6 +51853,18 @@ PrefabInstance:
     - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: jumpspeed
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: groundMasks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: groundMasks.Array.data[0].m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: groundMasks.Array.data[1].m_Bits
+      value: 136
       objectReference: {fileID: 0}
     - target: {fileID: 7503783057518220809, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: m_LocalPosition.x
