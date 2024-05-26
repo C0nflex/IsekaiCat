@@ -7,11 +7,13 @@ using UnityEngine;
 public class Ogre : BasicEnemyBehaviour
 {
     private GameObject batPrefab;
+    private Animator animator;
     protected override void Attack()
     {
         if (math.abs(attackPoint.transform.position.x - player.transform.position.x) < 0.8 &&
             math.abs(attackPoint.transform.position.y - player.transform.position.y) < 0.8)
             player.GetComponent<Health>().TakeDamage(attackDamage, knockBack, gameObject);
+        animator.SetTrigger("OgreAttack");
     }
     protected override IEnumerator AttackOnCooldown()
     {
@@ -44,12 +46,13 @@ public class Ogre : BasicEnemyBehaviour
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
-        //skeleton stats
+        //ogre stats
         COOLDOWN = 1f;
         SPEED = 0.7f;
         attackDamage = 30f;
         health._startingHealth = 150f;
+        animator = GetComponent<Animator>();
+        base.Start();
     }
 
     // Update is called once per frame

@@ -40,13 +40,20 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     protected virtual void Start()
     {
         player = playerInputs.Instance;
-        StartCoroutine(AttackOnCooldown());
         objectRenderer = GetComponent<Renderer>();
         stepCheck = transform.GetChild(2).gameObject;
         wallCheck = transform.GetChild(3).gameObject;
         groundMask = LayerMask.GetMask("ground");
-        facingDirection = player.transform.position.x < transform.position.x ? Direction.Left : Direction.Right; ;
-
+        if(player.transform.position.x < transform.position.x)
+        {
+            facingDirection = Direction.Right;
+            Flip();
+        }
+        else
+        {
+            facingDirection = Direction.Left;
+        }
+        StartCoroutine(AttackOnCooldown());
     }
 
     // Update is called once per frame
@@ -95,20 +102,20 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
         {
             // Flip the direction to left
             facingDirection = Direction.Left;
-            Flip(facingDirection);
+            Flip();
         }
         // Check if the target position is to the right and the current facing direction is left
         else if (targetPosition.x > transform.position.x && facingDirection == Direction.Left)
         {
             // Flip the direction to right
             facingDirection = Direction.Right;
-            Flip(facingDirection);
+            Flip();
         }
     }
-    void Flip(Direction direction)
+    void Flip()
     {
         // Flip the localRotation.y by setting the correct Euler angles
-        if (direction == Direction.Right)
+        if (facingDirection == Direction.Right)
             transform.localRotation = Quaternion.Euler(0, 180f, 0);
         else
             transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -117,6 +124,6 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
 
     public void EnableMovement()
     {
-            canMove = true;
+        canMove = true;
     }
 }
