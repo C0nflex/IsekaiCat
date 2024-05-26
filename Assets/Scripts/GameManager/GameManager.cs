@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public cameraFollowObject _cameraFollowObject;
 
     [SerializeField] private AudioClip musicClip;
+    [SerializeField] private AudioClip GamemusicClip;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -21,15 +22,15 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = musicClip;
         //EventManager.OnTimerStart();
+        audioSource.Play();
+    }
 
-        if (audioSource.clip != null)
+    public void PlayMusicClip(AudioClip clip)
+    {
+        if (audioSource.clip != clip)
         {
-            // Play the audio clip
+            audioSource.clip = clip;
             audioSource.Play();
-        }
-        else
-        {
-            Debug.LogError("No AudioClip assigned to the AudioSource.");
         }
     }
 
@@ -39,6 +40,17 @@ public class GameManager : MonoBehaviour
         {
             audioSource.Play();
         }
+    }
+
+
+    public void PlayMusic1()
+    {
+        PlayMusicClip(musicClip);
+    }
+
+    public void PlayMusic2()
+    {
+        PlayMusicClip(GamemusicClip);
     }
 
     public void PauseMusic()
