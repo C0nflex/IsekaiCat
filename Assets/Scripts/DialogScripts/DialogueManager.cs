@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     //public List<AudioClip> sentenceAudioClips;
     [SerializeField] private List<AudioClip> voiceLines;
     private AudioSource audioSource;
+    [SerializeField] private Animator robotAnimationController;
 
 
     // Start is called before the first frame update
@@ -80,6 +81,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        robotAnimationController.speed = 0;
         if (audioSource.isPlaying)
         {
             audioSource.Stop();
