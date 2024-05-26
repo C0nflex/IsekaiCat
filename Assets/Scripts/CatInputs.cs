@@ -27,8 +27,10 @@ public class CatInputs : playerInputs
 
     protected override void Jump()
     {
+        rangedAttackParticles.gameObject.SetActive(false);
         _rigidBody.AddForce(Vector2.up * jumpspeed, ForceMode2D.Impulse);
         base.Jump();
+        rangedAttackParticles.gameObject.SetActive(true);
     }
 
     protected override void BasicAttack()
