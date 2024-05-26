@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public abstract class BasicEnemyBehaviour : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     protected Rigidbody2D rb;
     protected LayerMask groundMask;
     private bool bounce = false;
+    private bool canMove= false;
     virtual protected void Die()
     {
         Destroy(gameObject);
@@ -50,14 +52,17 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (objectRenderer.isVisible)
+        if (canMove)
         {
-            Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-
-            if (player != null)
+            if (objectRenderer.isVisible)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, SPEED * Time.deltaTime);
-                MoveTowardsTarget(targetPosition);
+                Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+
+                if (player != null)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, targetPosition, SPEED * Time.deltaTime);
+                    MoveTowardsTarget(targetPosition);
+                }
             }
         }
     }
@@ -109,4 +114,9 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
             transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
+
+    public void EnableMovement()
+    {
+            canMove = true;
+    }
 }

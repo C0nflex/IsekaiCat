@@ -13,10 +13,13 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public playerInputs pushP;
 
+    private BasicEnemyBehaviour[] allEnemies;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        allEnemies = FindObjectsOfType<BasicEnemyBehaviour>();
         sentences = new Queue<string>();
     }
 
@@ -59,6 +62,10 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", false);
         EventManager.OnTimerStart();
         pushP.EnableMovement();
+        foreach(BasicEnemyBehaviour enemy in allEnemies)
+        {
+            enemy.EnableMovement();
+        }
     }
 
 }
