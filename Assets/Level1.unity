@@ -132352,6 +132352,18 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 1040848249}
+    - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: startGameButton
+      value: 
+      objectReference: {fileID: 1259356703}
+    - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
+      propertyPath: mainMenuContainer
+      value: 
+      objectReference: {fileID: 1040848249}
+    - target: {fileID: 7321391441181542020, guid: fc143986e8c4509438f5d55d3b43763b, type: 3}
       propertyPath: basicAttackCooldown
       value: 0.2
       objectReference: {fileID: 0}
