@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Health : MonoBehaviour
 {
@@ -9,10 +7,13 @@ public class Health : MonoBehaviour
     public float _currentHealth { get; private set; }
     private float _lastHitDmg;
     private Animator _anim;
-    public bool _Dead {get; private set;}
+    public bool _Dead { get; private set; }
     private Rigidbody2D _rd;
     public bool hurt = false;
 
+    // Regeneration settings
+    [SerializeField] private float regenRate = 4f; // Health points to regenerate per interval
+    [SerializeField] private float regenInterval = 1f; // Time in seconds between each regeneration tick
 
     private void Awake()
     {
@@ -20,10 +21,14 @@ public class Health : MonoBehaviour
         _currentHealth = _startingHealth;
         _anim = GetComponent<Animator>();
         _rd = GetComponent<Rigidbody2D>();
+
+        // Start the health regeneration coroutine
+        StartCoroutine(PassiveRegen());
     }
-    private int calculateKnockbackDirection(Vector3 damageDealerPos) => (gameObject.transform.position.x - damageDealerPos.x > 0) ? 1 : -1;
-        // returns 1 for right or -1 for left
-    
+
+    private int calculateKnockbackDirection(Vector3 damageDealerPos) =>
+        (gameObject.transform.position.x - damageDealerPos.x > 0) ? 1 : -1;
+
     public void TakeDamage(float damage, Vector2 knockback, GameObject damageDealer)
     {
         int knockbackDirection = calculateKnockbackDirection(damageDealer.transform.position);
@@ -32,7 +37,7 @@ public class Health : MonoBehaviour
 
         if (_currentHealth > 0)
         {
-           //_anim.SetTrigger("hurt");
+            //_anim.SetTrigger("hurt");
             hurt = true;
             _rd.velocity = new Vector2(_rd.velocity.x + knockback.x * knockbackDirection, _rd.velocity.y + knockback.y);
         }
@@ -44,7 +49,6 @@ public class Health : MonoBehaviour
                 _Dead = true;
             }
             Destroy(gameObject);
-
         }
     }
 
@@ -70,6 +74,15 @@ public class Health : MonoBehaviour
         }
     }
 
-
-
+    private IEnumerator PassiveRegen()
+    {
+        while (!_Dead)
+        {
+            if (_currentHealth < _startingHealth)
+            {
+                _currentHealth = Mathf.Clamp(_currentHealth + regenRate, 0, _startingHealth);
+            }
+            yield return new WaitForSeconds(regenInterval);
+        }
+    }
 }
