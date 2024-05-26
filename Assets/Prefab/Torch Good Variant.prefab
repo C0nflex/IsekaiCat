@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2594388926115048120, guid: f6a6909950d61b24c8f012af1e453c60, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8785201421667617637, guid: f6a6909950d61b24c8f012af1e453c60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.012
@@ -55,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 8785201421667617637, guid: f6a6909950d61b24c8f012af1e453c60, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.053
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916261530463389899, guid: f6a6909950d61b24c8f012af1e453c60, type: 3}
+      propertyPath: m_Name
+      value: Torch Good Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9111741691790646656, guid: f6a6909950d61b24c8f012af1e453c60, type: 3}
       propertyPath: m_Name
