@@ -30,6 +30,11 @@ public abstract class playerInputs : MonoBehaviour
     [SerializeField] protected LayerMask EnemyLayer;
     [SerializeField] protected float basicAttackDamage;
     [SerializeField] protected Vector2 basicAttackKnockback;
+    [Header("Abilities")]
+    [SerializeField] private float basicAttackCooldown;
+    [SerializeField] private float rangedAttackCooldown;
+    private bool basicAttackOnCooldown = false;
+    private bool rangedAttackOnCooldown = false;
     private cameraFollowObject _cameraFollowObject;
     protected Rigidbody2D _rigidBody;
     private Animator anim;
@@ -143,12 +148,12 @@ public abstract class playerInputs : MonoBehaviour
 
     private void HandleAbilites()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !basicAttackOnCooldown)
         {
             BasicAttack();
             anim.SetTrigger("melee");
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !rangedAttackOnCooldown)
             RangedAttack();
     }
 
@@ -319,8 +324,28 @@ public abstract class playerInputs : MonoBehaviour
 
     protected abstract void HandleJump();
 
-    protected abstract void BasicAttack();
+    protected virtual void BasicAttack()
+    {
+        StartCoroutine(BasicAttackCooldown());
+    }
 
-    protected abstract void RangedAttack();
+    protected virtual void RangedAttack()
+    {
+        StartCoroutine(RangedAttackCooldown());
+    }
+
+    protected IEnumerator BasicAttackCooldown()
+    {
+        basicAttackOnCooldown  = true;
+        yield return new WaitForSeconds(basicAttackCooldown);
+        basicAttackOnCooldown = false;
+    }
+
+    protected IEnumerator RangedAttackCooldown()
+    {
+        rangedAttackOnCooldown = true;
+        yield return new WaitForSeconds(basicAttackCooldown);
+        rangedAttackOnCooldown = false;
+    }
 
 }
