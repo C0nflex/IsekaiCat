@@ -10,6 +10,7 @@ public class NewBehaviourScript : MonoBehaviour
     enum TimerType {Countdown, Stopwatch}
     [SerializeField] private TimerType timerType;
     [SerializeField] private float timeToDisplay = 00.0f;
+    [SerializeField] private GameObject instructions;
 
     private bool isRunning;
     private void Awake()
@@ -34,10 +35,21 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!isRunning) return;
         if (timerType == TimerType.Countdown && timeToDisplay < 0.0f) return;
+        if (timeToDisplay > 20.0f)
+        {
+            DeactivateInstructions(); 
+        }
         timeToDisplay += Time.deltaTime;
         TimeSpan timeSpan = TimeSpan.FromSeconds(timeToDisplay);
         timerText.text = timeSpan.ToString(@"mm\:ss\:ff");
+    }
+
+
+    void DeactivateInstructions()
+    {
+        instructions.SetActive(false); 
     }
 }

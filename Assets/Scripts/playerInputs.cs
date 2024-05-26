@@ -5,7 +5,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public abstract class playerInputs : MonoBehaviour
 {
@@ -48,15 +50,15 @@ public abstract class playerInputs : MonoBehaviour
     //private float moveSpeed = 0.2f; // Horizontal movement speed in units per second
     private float moveDuration = 0.2f; // Duration of movement in seconds
     protected bool isMidJump = false;
-    private float gravityScale;  
+    private float gravityScale;
     private float xInput;
     protected float lastGroundedTime;
     protected bool isGoingUpStairs = false;
     public bool canMove = false;
 
-    
-    public ParticleSystem rangedAttackParticles;
 
+    public ParticleSystem rangedAttackParticles;
+    private Vector2 startPos; // for player restart position
 
 
 
@@ -65,6 +67,7 @@ public abstract class playerInputs : MonoBehaviour
         Instance = this;
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
+
         gravityScale = _rigidBody.gravityScale;
 
     }
@@ -75,19 +78,21 @@ public abstract class playerInputs : MonoBehaviour
         _fallSpeedYDampingChangeThreshold = cameraManger.Instance._fallSpeedYDamoingChangeThreshold;
         stepPos = transform.Find("TileStepCheck").transform;
         wallPos = transform.Find("WallStepCheck").transform;
-        
+        startPos = transform.position;
         _cameraFollowObject.NewObjectToFollow(transform);
     }
 
     void Update()
     {
-       
-        if(canMove)
+
+        if (canMove)
         {
             GetInput();
             //CheckStep();
             HandleJump();
             HandleAbilites();
+            PlayerRestartGame();
+            PlayerRestartPosition();
             anim.SetFloat("speed", Mathf.Abs(xInput));
 
             if (_rigidBody.velocity.y < _fallSpeedYDampingChangeThreshold && !cameraManger.Instance.isLerpingYDamping && !cameraManger.Instance.LerpedFromPlayerFalling)
@@ -123,26 +128,27 @@ public abstract class playerInputs : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-            CheckGround();
-            //CheckStep();
-            ApplyFriction();
-            MoveWithInput();
 
-            if (xInput != 0)
-            {
-                TurnCheck();
-            }
-        
+        CheckGround();
+        //CheckStep();
+        ApplyFriction();
+        MoveWithInput();
+
+        if (xInput != 0)
+        {
+            TurnCheck();
+        }
+
     }
 
-    public  void EnableMovement()
+
+    public void EnableMovement()
     {
         canMove = true;
     }
 
     // Function to disable player movement
-    public  void DisableMovement()
+    public void DisableMovement()
     {
         canMove = false;
     }
@@ -156,6 +162,24 @@ public abstract class playerInputs : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse1) && !rangedAttackOnCooldown)
             RangedAttack();
+    }
+
+    private void PlayerRestartGame()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+
+
+    private void PlayerRestartPosition()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            transform.position = startPos;
+        }
     }
 
     private void GetInput()
@@ -194,7 +218,7 @@ public abstract class playerInputs : MonoBehaviour
 
     private void CheckGround()
     {
-        foreach(var groundMask in groundMasks)
+        foreach (var groundMask in groundMasks)
             anim.SetBool("grounded", Physics2D.OverlapAreaAll(groundcheck.bounds.min, groundcheck.bounds.max, groundMask).Length > 0);
 
         if (anim.GetBool("grounded"))
@@ -248,8 +272,8 @@ public abstract class playerInputs : MonoBehaviour
         Vector2 currentPosition = transform.position;
         float zRotation = transform.rotation.eulerAngles.y;
         var roation = 1;
-        if ((zRotation % 360) >0) { roation = -1; }
-        float targetX = currentPosition.x + (0.2f*roation); // Move 0.2 units to the right
+        if ((zRotation % 360) > 0) { roation = -1; }
+        float targetX = currentPosition.x + (0.2f * roation); // Move 0.2 units to the right
         float targetY = currentPosition.y + 0.20f; // and thhis
         float elapsedTime = 0f;
 
@@ -264,7 +288,7 @@ public abstract class playerInputs : MonoBehaviour
             float newX = Mathf.Lerp(currentPosition.x, targetX, elapsedTime / moveDuration);
             float newY = Mathf.Lerp(currentPosition.y, targetY, elapsedTime / moveDuration);
             transform.position = new Vector2(newX, newY);
-            
+
 
             // Increment elapsed time
             elapsedTime += Time.deltaTime;
@@ -337,7 +361,7 @@ public abstract class playerInputs : MonoBehaviour
 
     protected IEnumerator BasicAttackCooldown()
     {
-        basicAttackOnCooldown  = true;
+        basicAttackOnCooldown = true;
         yield return new WaitForSeconds(basicAttackCooldown);
         basicAttackOnCooldown = false;
     }
