@@ -6310,7 +6310,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99182,7 +99182,7 @@ Transform:
   m_GameObject: {fileID: 1579372344}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.782752, y: -1.7733209, z: -10.011082}
+  m_LocalPosition: {x: -1.3508711, y: -1.3991311, z: -10.011082}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100496,19 +100496,7 @@ SceneRoots:
   - {fileID: 1136956556}
   - {fileID: 1754987571}
   - {fileID: 1597935431}
-  - {fileID: 1142550991}
-  - {fileID: 447772858}
-  - {fileID: 534707033}
-  - {fileID: 594993130}
-  - {fileID: 370740702}
-  - {fileID: 116417379}
-  - {fileID: 133655673}
-  - {fileID: 1523442429}
-  - {fileID: 558249972}
-  - {fileID: 1779265917}
-  - {fileID: 1765181999}
-  - {fileID: 2846998221521701416}
-  - {fileID: 1176990023}
-  - {fileID: 1238516697}
   - {fileID: 8998367574950121823}
   - {fileID: 2947754017473852334}
+  - {fileID: 335837031}
+  - {fileID: 1759810125}
