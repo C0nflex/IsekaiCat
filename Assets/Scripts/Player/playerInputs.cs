@@ -67,7 +67,10 @@ public abstract class playerInputs : MonoBehaviour
     public bool isCatAtEnd = false;
     public bool isVendingAtEnd = false;
     public bool isSwordAtEnd = false;
-    public int SoulLevel = 1; //TODO:  temp value 
+    public int SoulLevel = 0; //TODO:  temp value 
+    public bool isDead = false;
+    //public GameObject isDeadText;
+    public GameObject respawnPre;
 
 
     private void Awake()
@@ -94,8 +97,26 @@ public abstract class playerInputs : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (isDead)
+        {
 
-        if (canMove)
+            //gameObject.SetActive(false);
+
+            respawnPre.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                isDead = false;
+                respawnPre.SetActive(false);
+                gameObject.transform.position = startPos;
+                gameObject.GetComponent<Health>().UpdateHPToMax();
+                //gameObject.anima.SetTrigger("die");
+                gameObject.GetComponent<Animator>().SetTrigger("respawn");
+                //Instantiate(a, startPos , Quaternion.identity);
+            }
+        }
+        //else { isDeadText.SetActive(false); }
+        else if (canMove)
         {
             
             GetInput();

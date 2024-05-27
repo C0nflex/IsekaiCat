@@ -55,6 +55,11 @@ public class Health : MonoBehaviour
             {
                 _anim.SetTrigger("die");
                 _Dead = true;
+                if (gameObject.GetComponent<playerInputs>() != null)
+                {
+                    playerInputs.Instance.isDead = true;
+                    //Destroy(playerInputs.Instance.gameObject);
+                }
             }
         }
         onHurt?.Invoke(this, new EventArgs { });
@@ -104,5 +109,11 @@ public class Health : MonoBehaviour
     private void Kill()
     {
         Destroy(gameObject);
+    }
+
+    public void UpdateHPToMax()
+    {
+        _currentHealth = _startingHealth;
+        _Dead = false;
     }
 }
