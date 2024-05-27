@@ -27,9 +27,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject catForSwitch;
     [SerializeField] private GameObject swordForSwitch;
 
-    private Vector2 startVector = new Vector2(-7.15f, -1.65f);
-
-
+    //private Vector2 startVector = new Vector2(-7.15f, -1.65f);
+    private Vector2 startVector = new Vector2(18.86f, 33.97f);
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -117,6 +117,8 @@ public class DialogueManager : MonoBehaviour
         }
         else if (playerInputs.Instance.isVendingAtEnd == true && playerInputs.Instance.returnPlayerName() == "VendingMachine")
         {
+            vendingMachineForSwitch.SetActive(false);
+            swordForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
             //add life force 0
         }
@@ -124,6 +126,7 @@ public class DialogueManager : MonoBehaviour
         {
             EventManager.OnTimerStop();
             endingScreen.SetActive(true);
+            // add button for restart scene :)
         }
         playerInputs.Instance.EnableMovement();
     }
