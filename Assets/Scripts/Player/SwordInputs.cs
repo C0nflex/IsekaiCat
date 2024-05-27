@@ -27,6 +27,10 @@ public class SwoardInputs : playerInputs
     [SerializeField] private TrailRenderer GeneralTrailRenderer;
     private TrailRenderer DashTrailRenderer;
     public List<Collider2D> enemiesAlreadyHitByDash = new List<Collider2D>();
+
+    public AudioClip swordSlash;
+    public AudioClip swordDash;
+
     protected override void Start()
     {
         DashTrailRenderer = GetComponent<TrailRenderer>();
@@ -70,6 +74,7 @@ public class SwoardInputs : playerInputs
         if (isDashing)
         {
             anim.SetBool("dashing", true);
+            
             List<Collider2D> enemiesHit = new List<Collider2D>();
             foreach (LayerMask EnemyLayer in EnemyLayers)
             {
@@ -134,6 +139,7 @@ public class SwoardInputs : playerInputs
             if (enemy.tag == "Enemy")
                 enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
         }
+        audioSource.PlayOneShot(swordSlash);
         base.BasicAttack();
     }
 
@@ -146,6 +152,7 @@ public class SwoardInputs : playerInputs
     private IEnumerator Dash()
     {
         isDashing = true;
+        audioSource.PlayOneShot(swordDash);
         float originalGravity = _rigidBody.gravityScale;
         _rigidBody.gravityScale = 0f;
         _rigidBody.velocity = new Vector2((IsFacingRight ? 1 : -1) * dashingDamage, 0f);

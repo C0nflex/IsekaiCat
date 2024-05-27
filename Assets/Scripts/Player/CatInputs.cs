@@ -14,6 +14,8 @@ public class CatInputs : playerInputs
     [SerializeField] private float projectileDamage;
     [SerializeField] private Vector2 projectileKnockback;
     [SerializeField] private float projectileGravity;
+    public AudioClip meleeAttackSound;
+    public AudioClip rangeAttackSound;
     protected override void HandleJump()
     {
         if (!jumpOnCooldown && ((Input.GetKeyDown(KeyCode.Space) && lastGroundedTime > 0) && !isMidJump || (Input.GetKeyDown(KeyCode.Space) & isGoingUpStairs)))
@@ -36,6 +38,7 @@ public class CatInputs : playerInputs
 
     protected override void BasicAttack()
     {
+        audioSource.PlayOneShot(meleeAttackSound);
         List<Collider2D> enemiesHit = new List<Collider2D>();
         foreach (LayerMask EnemyLayer in EnemyLayers)
         {
@@ -54,6 +57,7 @@ public class CatInputs : playerInputs
         // Calculate the direction from the spawn point to the mouse position
 
         // Instantiate and initialize the projectile
+        audioSource.PlayOneShot(rangeAttackSound);
         var ProjectileSpawned = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         var direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         direction = new Vector3(direction.x, direction.y, transform.position.z).normalized;
