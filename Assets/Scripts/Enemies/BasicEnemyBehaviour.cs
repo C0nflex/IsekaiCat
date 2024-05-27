@@ -95,8 +95,8 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     {
         Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 
-        var StepcircleBound = Physics2D.OverlapCircle(stepCheck.transform.position, 0.001f, groundMask);
-        var WallCircleBound = Physics2D.OverlapCircle(wallCheck.transform.position, 0.001f, groundMask);
+        var StepcircleBound = Physics2D.OverlapCircle(stepCheck.transform.position, 0.01f, groundMask);
+        var WallCircleBound = Physics2D.OverlapCircle(wallCheck.transform.position, 0.01f, groundMask);
         if (StepcircleBound != null && WallCircleBound == null && !bounce)
         {
             Vector2 currentPosition = transform.position;
