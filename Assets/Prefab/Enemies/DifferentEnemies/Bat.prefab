@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 775091673564489039, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283351307546198321, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1528247879082079953, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.765163
@@ -84,6 +92,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5244020909842297245, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7687315053606698489, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.07581827
@@ -96,9 +108,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.07581827
       objectReference: {fileID: 0}
+    - target: {fileID: 8145867435458837416, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8264827878063456946, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_Name
       value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264827878063456946, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3751339701082184848, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
@@ -146,4 +166,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32876aa9986ba1f43bb1a602a8b5d062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virtualCamera: {fileID: 0}

@@ -35,7 +35,7 @@ public class ProjectileManager : MonoBehaviour
     // Update is called once per frame
     protected virtual void FixedUpdate()
     {
-        transform.position += direction * speed * Time.deltaTime;
+        transform.position += direction.normalized * speed * Time.deltaTime;
     }
 
     protected virtual void HitCharacters(List<Collider2D> Characters)
