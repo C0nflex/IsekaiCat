@@ -444,4 +444,9 @@ public abstract class playerInputs : MonoBehaviour
         return false;
     }
 
+    public void increaseSoulLevel(int level)
+    {
+        SoulLevel += level;
+    }
+
 }
