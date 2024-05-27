@@ -41,7 +41,7 @@ public abstract class playerInputs : MonoBehaviour
     private bool rangedAttackOnCooldown = false;
     private cameraFollowObject _cameraFollowObject;
     protected Rigidbody2D _rigidBody;
-    private Animator anim;
+    protected Animator anim;
     public bool IsFacingRight = true;
     private float _fallSpeedYDampingChangeThreshold;
 

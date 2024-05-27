@@ -30,7 +30,7 @@ public class VendingMachineInputs : playerInputs
     {
         if (!jumpOnCooldown && !isMidJump && Input.GetKeyDown(KeyCode.Space))
         {
-            Jump();
+            anim.SetTrigger("green");
         }
     }
 
@@ -64,6 +64,7 @@ public class VendingMachineInputs : playerInputs
 
     private void Slam()
     {
+        anim.SetTrigger("slam");
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(transform.position, groundSlamRadius, EnemyLayer);
         foreach (Collider2D enemy in enemiesHit)
             enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
@@ -98,6 +99,11 @@ public class VendingMachineInputs : playerInputs
 
     protected override void RangedAttack()
     {
+        anim.SetTrigger("red");
+    }
+
+    private void SpawnGranede()
+    {
         var ProjectileSpawned = Instantiate(damageGrenadePrefab, projectileSpawnPoint.position, Quaternion.identity);
         var direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         direction = new Vector3(direction.x, direction.y, transform.position.z).normalized;
@@ -105,6 +111,5 @@ public class VendingMachineInputs : playerInputs
         damageGrenadeSpeed, damageGrenadeDamage, damageGrenadeKnockBack, damageGrenadeGravity);
         base.RangedAttack();
     }
-
 
 }

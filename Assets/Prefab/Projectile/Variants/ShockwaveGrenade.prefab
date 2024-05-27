@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 873953682661104981, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
+      propertyPath: m_Radius
+      value: 0.018039074
+      objectReference: {fileID: 0}
+    - target: {fileID: 873953682661104981, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00064047676
+      objectReference: {fileID: 0}
+    - target: {fileID: 873953682661104981, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.00011283532
+      objectReference: {fileID: 0}
     - target: {fileID: 1844020752752972215, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
       propertyPath: m_Name
       value: ShockwaveGrenade
@@ -15,7 +27,19 @@ PrefabInstance:
     - target: {fileID: 2661154038957920791, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 250ba5538c326144899ab55b3466b3ac, type: 3}
+      objectReference: {fileID: 21300000, guid: 3907e7fe45eb98d4e86fa8638ae6a426, type: 3}
+    - target: {fileID: 3276675881585650208, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276675881585650208, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276675881585650208, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3276675881585650208, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
