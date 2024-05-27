@@ -91,11 +91,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.83
+      value: 56.49
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.35
+      value: 28.37
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -103,7 +103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00000004371139
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -111,7 +111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalRotation.z
@@ -260,27 +260,31 @@ MonoBehaviour:
     m_Bits: 128
   basicAttackDamage: 20
   basicAttackKnockback: {x: 4, y: 4}
-  basicAttackCooldown: 2
+  basicAttackCooldown: 0.5
   rangedAttackCooldown: 1
-  IsFacingRight: 0
+  IsFacingRight: 1
   canMove: 0
   rangedAttackParticles: {fileID: 0}
+  isCatAtEnd: 0
+  isVendingAtEnd: 0
+  isSwordAtEnd: 0
+  SoulLevel: 1
   projectileSpawnPoint: {fileID: 4565736829246676928}
   shockwaveGrenadePrefab: {fileID: 5210941307254988184, guid: 1b29012e707f1c84d92685848f252b00, type: 3}
   shockwaveGrenadeSpeed: 1
-  shockwaveGrenadeKnockBack: {x: 13, y: 13}
+  shockwaveGrenadeKnockBack: {x: 20, y: 20}
   shockwaveGrenadeGravity: 1
-  groundSlamLaunchSpeed: 10
+  groundSlamLaunchSpeed: 12
   groundSlamDamage: 30
   groundSlamRadius: 5
   groundSlamFallAndHangGravityMultiplayer: 20
-  TimeUntilDrop: 0.6
+  TimeUntilDrop: 1
   topCollider: {fileID: 4879744053178540316}
   isMidSlam: 0
   didstartSlam: 0
   groundSlamKnockBack: {x: 2, y: 5}
   damageGrenadePrefab: {fileID: 8980115968018036671, guid: b74592fea08a4b3419a9a4a3c490136a, type: 3}
-  damageGrenadeSpeed: 15
+  damageGrenadeSpeed: 60
   damageGrenadeDamage: 40
   damageGrenadeKnockBack: {x: 2, y: 2}
   damageGrenadeGravity: 3
