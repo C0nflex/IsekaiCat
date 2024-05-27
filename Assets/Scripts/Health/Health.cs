@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
     private Animator _anim;
     public bool _Dead { get; private set; }
     private Rigidbody2D _rd;
+    private SpriteRenderer _spriteRenderer;
+    private Material orgMat;
     public bool hurt = false;
 
     // Regeneration settings
@@ -23,6 +25,8 @@ public class Health : MonoBehaviour
         _currentHealth = _startingHealth;
         _anim = GetComponent<Animator>();
         _rd = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        orgMat = _spriteRenderer.material;
 
         // Start the health regeneration coroutine
         StartCoroutine(PassiveRegen());
@@ -36,7 +40,8 @@ public class Health : MonoBehaviour
         int knockbackDirection = calculateKnockbackDirection(damageDealer.transform.position);
         _lastHitDmg = damage;
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _startingHealth);
-        
+        if (damage > 0)
+            StartCoroutine(FlashEffect());
 
         if (_currentHealth > 0)
         {
@@ -53,6 +58,13 @@ public class Health : MonoBehaviour
             }
         }
         onHurt?.Invoke(this, new EventArgs { });
+    }
+
+    private IEnumerator FlashEffect()
+    {
+        _spriteRenderer.material = GameManager.Instance.Flash;
+        yield return new WaitForSeconds(0.2f);
+        _spriteRenderer.material = orgMat;
     }
 
     public void TakeDamageNoAnimation(float damage, Vector2 knockback)
