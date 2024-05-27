@@ -71,7 +71,7 @@ public abstract class playerInputs : MonoBehaviour
     //public GameObject isDeadText;
     public GameObject respawnPre;
     public int SoulLevel; //TODO:  temp value 
-
+    public AudioSource audioSource;
 
     private void Awake()
     {
@@ -86,6 +86,7 @@ public abstract class playerInputs : MonoBehaviour
 
     protected virtual void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         _cameraFollowObject = GameManager.Instance._cameraFollowObject;
         _fallSpeedYDampingChangeThreshold = cameraManger.Instance._fallSpeedYDamoingChangeThreshold;
         stepPos = transform.Find("TileStepCheck").transform;

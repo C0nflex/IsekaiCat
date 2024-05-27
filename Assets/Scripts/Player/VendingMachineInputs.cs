@@ -29,6 +29,10 @@ public class VendingMachineInputs : playerInputs
     [SerializeField] private Vector2 damageGrenadeKnockBack;
     [SerializeField] private float damageGrenadeGravity;
 
+    public AudioClip slam;
+    public AudioClip grenade;
+    public AudioClip shockwave;
+
     protected override void HandleJump()
     {
         if (!jumpOnCooldown && !isMidJump && Input.GetKeyDown(KeyCode.Space))
@@ -43,6 +47,7 @@ public class VendingMachineInputs : playerInputs
         var direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         direction = new Vector3(direction.x, direction.y, transform.position.z).normalized;
         ProjectileSpawned.GetComponent<ProjectileManager>().Init(direction,shockwaveGrenadeSpeed, 0, shockwaveGrenadeKnockBack, shockwaveGrenadeGravity);
+        audioSource.PlayOneShot(shockwave);
         base.Jump();
     }
 
@@ -55,6 +60,7 @@ public class VendingMachineInputs : playerInputs
             //_rigidBody.AddForce(Vector2.up * groundSlamLaunchSpeed, ForceMode2D.Impulse);
             didstartSlam = true;
             isMidJump = true;
+            
         }
     }
 
@@ -102,6 +108,7 @@ public class VendingMachineInputs : playerInputs
         isMidSlam = false;
         didstartSlam = false;
         isMidJump = false;
+        audioSource.PlayOneShot(slam);
     }
 
     protected override void InHangTime()
@@ -136,6 +143,7 @@ public class VendingMachineInputs : playerInputs
         direction = new Vector3(direction.x, direction.y, transform.position.z).normalized;
         ProjectileSpawned.GetComponent<ProjectileManager>().Init(direction,
         damageGrenadeSpeed, damageGrenadeDamage, damageGrenadeKnockBack, damageGrenadeGravity);
+        audioSource.PlayOneShot(grenade);
         base.RangedAttack();
     }
 
