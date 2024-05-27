@@ -48,6 +48,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.907219
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.907219
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.907219
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.92
+      objectReference: {fileID: 0}
     - target: {fileID: 3911248705586838302, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_Mass
       value: 0.20053531
@@ -63,6 +83,18 @@ PrefabInstance:
     - target: {fileID: 3911248705586838302, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687315053606698489, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.07581827
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687315053606698489, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.07581827
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687315053606698489, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.07581827
       objectReference: {fileID: 0}
     - target: {fileID: 8264827878063456946, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_Name
@@ -114,3 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32876aa9986ba1f43bb1a602a8b5d062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 0}

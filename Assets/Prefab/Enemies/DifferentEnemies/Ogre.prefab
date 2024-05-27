@@ -143,12 +143,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 23.827211
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 23.827211
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 23.827211
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.067
+      value: 0.87
       objectReference: {fileID: 0}
     - target: {fileID: 3576665003691719041, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.436
+      value: 8.25
       objectReference: {fileID: 0}
     - target: {fileID: 4554132181200826385, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_Size.x
@@ -202,6 +214,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 2.64
       objectReference: {fileID: 0}
+    - target: {fileID: 7687315053606698489, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0538215
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687315053606698489, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0538215
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687315053606698489, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0538215
+      objectReference: {fileID: 0}
     - target: {fileID: 7898884006301306203, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: _startingHealth
       value: 150
@@ -249,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e60491b359ff594aa45e5fcee2ebaa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 0}
 --- !u!95 &7323825019441955554
 Animator:
   serializedVersion: 5

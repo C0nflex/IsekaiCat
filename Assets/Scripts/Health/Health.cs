@@ -80,7 +80,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator PassiveRegen()
     {
-        while (!_Dead)
+        while (!_Dead && gameObject.GetComponent<playerInputs>() != null)
         {
             if (_currentHealth < _startingHealth)
             {

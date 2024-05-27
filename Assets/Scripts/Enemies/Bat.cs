@@ -34,7 +34,7 @@ public class Bat : BasicEnemyBehaviour
     }
     protected override IEnumerator AttackOnCooldown()
     {
-        yield return new WaitForSeconds(COOLDOWN);
+        yield return null;
     }
 
     protected override void Awake()

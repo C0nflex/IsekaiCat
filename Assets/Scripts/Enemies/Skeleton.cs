@@ -10,14 +10,6 @@ public class Skeleton : BasicEnemyBehaviour
     [SerializeField] private float arrowSpeed;
     [SerializeField] private Vector2 arrowKnockback;
     [SerializeField] private float arrowGravity;
-    protected override IEnumerator AttackOnCooldown()
-    {
-        while (true)
-        {
-            Attack();
-            yield return new WaitForSeconds(COOLDOWN);
-        }
-    }
 
     protected override void Awake()
     {
@@ -27,9 +19,9 @@ public class Skeleton : BasicEnemyBehaviour
     protected override void Start()
     {
         //skeleton stats
-        COOLDOWN = 1f;
+        COOLDOWN = 1.5f;
         SPEED = 1f;
-        attackDamage = 25f;
+        attackDamage = 15f;
         health._startingHealth = 100f;
         stepCheck = transform.GetChild(2).gameObject;
         wallCheck = transform.GetChild(3).gameObject;
