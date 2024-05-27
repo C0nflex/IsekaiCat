@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 87752232719185961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.39, y: -4.41, z: 0}
+  m_LocalPosition: {x: 5.88, y: -4.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,11 +131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1528247879082079953, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.981
+      value: -3.321
       objectReference: {fileID: 0}
     - target: {fileID: 1528247879082079953, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.934
+      value: -2.884
       objectReference: {fileID: 0}
     - target: {fileID: 1528247879082079953, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -262,6 +262,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8264827878063456946, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8967774397647035330}
+    - targetCorrespondingSourceObject: {fileID: 8264827878063456946, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 14789373124559525}
   m_SourcePrefab: {fileID: 100100000, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
 --- !u!4 &2998342864520460433 stripped
 Transform:
@@ -285,7 +288,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c512947b332270a4eaa9dddf4b3caa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virtualCamera: {fileID: 0}
   arrowSpeed: 1
   arrowKnockback: {x: 1, y: 0}
   arrowGravity: 0
+--- !u!95 &14789373124559525
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628299420933557490}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
