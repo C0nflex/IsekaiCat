@@ -1,8 +1,6 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
 
-public class FlagCheckPoint : MonoBehaviour
+public class GOOD_ROBOT_DIALOG : MonoBehaviour
 {
     // Reference to the flag GameObject
     public GameObject flag;
@@ -13,7 +11,9 @@ public class FlagCheckPoint : MonoBehaviour
     // Distance at which the player can interact with the flag
     public float interactionDistance = 2.0f;
 
-    [SerializeField] private GameObject text;
+    public Dialogue dialogue;
+
+
 
 
     void Update()
@@ -37,7 +37,7 @@ public class FlagCheckPoint : MonoBehaviour
                 {
                     // Call a method to perform the action on the flag
                     InteractWithFlag();
-                    
+
                 }
             }
             else
@@ -50,20 +50,6 @@ public class FlagCheckPoint : MonoBehaviour
 
     void InteractWithFlag()
     {
-        //player2.GetComponent<playerInputs>().setPlayerCheckPoint
-        playerInputs.Instance.setPlayerCheckPoint(gameObject.transform.position);
-        StartCoroutine(ActivateTextForTwoSeconds());
-    }
-
-    private IEnumerator ActivateTextForTwoSeconds()
-    {
-        // Activate the text GameObject
-        text.SetActive(true);
-
-        // Wait for 2 seconds
-        yield return new WaitForSeconds(2);
-
-        // Deactivate the text GameObject
-        text.SetActive(false);
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }

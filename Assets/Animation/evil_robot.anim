@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: robot_anim
+  m_Name: evil_robot
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1656259955, guid: 0bd1b9f1d538bb54696e1009271f0fda, type: 3}
+      value: {fileID: -692735548, guid: 77201b6f8eefa2d4f81ea23359d4c776, type: 3}
     - time: 0.25
-      value: {fileID: -1110439160, guid: 0bd1b9f1d538bb54696e1009271f0fda, type: 3}
+      value: {fileID: 797916540, guid: 77201b6f8eefa2d4f81ea23359d4c776, type: 3}
     - time: 0.5
-      value: {fileID: 1656259955, guid: 0bd1b9f1d538bb54696e1009271f0fda, type: 3}
+      value: {fileID: -692735548, guid: 77201b6f8eefa2d4f81ea23359d4c776, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,9 +48,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1656259955, guid: 0bd1b9f1d538bb54696e1009271f0fda, type: 3}
-    - {fileID: -1110439160, guid: 0bd1b9f1d538bb54696e1009271f0fda, type: 3}
-    - {fileID: 1656259955, guid: 0bd1b9f1d538bb54696e1009271f0fda, type: 3}
+    - {fileID: -692735548, guid: 77201b6f8eefa2d4f81ea23359d4c776, type: 3}
+    - {fileID: 797916540, guid: 77201b6f8eefa2d4f81ea23359d4c776, type: 3}
+    - {fileID: -692735548, guid: 77201b6f8eefa2d4f81ea23359d4c776, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

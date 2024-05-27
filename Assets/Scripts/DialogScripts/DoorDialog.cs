@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class FlagCheckPoint : MonoBehaviour
+public class DoorDialog : MonoBehaviour
 {
     // Reference to the flag GameObject
     public GameObject flag;
@@ -11,7 +11,7 @@ public class FlagCheckPoint : MonoBehaviour
     public GameObject interactionPrompt;
 
     // Distance at which the player can interact with the flag
-    public float interactionDistance = 2.0f;
+    public float interactionDistance = 1.0f;
 
     [SerializeField] private GameObject text;
 
@@ -37,7 +37,7 @@ public class FlagCheckPoint : MonoBehaviour
                 {
                     // Call a method to perform the action on the flag
                     InteractWithFlag();
-                    
+
                 }
             }
             else
