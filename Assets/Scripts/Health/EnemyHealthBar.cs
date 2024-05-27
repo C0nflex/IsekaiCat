@@ -8,7 +8,7 @@ public class EnemyHealthBar : HealthBar
     // Start is called before the first frame update
     void Start()
     {
-        characterHealth = transform.parent.transform.parent.transform.parent.GetComponent <Health>();
+        characterHealth = transform.parent.parent.parent.GetComponent <Health>();
         currentHealthBar = GetComponent<Image>();
     }
 

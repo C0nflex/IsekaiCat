@@ -52,7 +52,7 @@ public abstract class playerInputs : MonoBehaviour
     //private float moveSpeed = 0.2f; // Horizontal movement speed in units per second
     private float moveDuration = 0.2f; // Duration of movement in seconds
     protected bool isMidJump = false;
-    private float gravityScale;
+    protected float gravityScale;
     private float xInput;
     protected float lastGroundedTime;
     protected bool isGoingUpStairs = false;
@@ -409,11 +409,13 @@ public abstract class playerInputs : MonoBehaviour
 
     protected IEnumerator RangedAttackCooldown()
     {
-        rangedAttackParticles.gameObject.SetActive(false);
+        if(rangedAttackParticles != null)
+            rangedAttackParticles.gameObject.SetActive(false);
         rangedAttackOnCooldown = true;
         yield return new WaitForSeconds(rangedAttackCooldown);
         rangedAttackOnCooldown = false;
-        rangedAttackParticles.gameObject.SetActive(true);
+        if (rangedAttackParticles != null)
+            rangedAttackParticles.gameObject.SetActive(true);
     }
 
 }

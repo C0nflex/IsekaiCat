@@ -47,10 +47,6 @@ public class CatInputs : playerInputs
     protected override void RangedAttack()
     {
         // Calculate the direction from the spawn point to the mouse position
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0; // Ensure the z-axis is 0 for 2D
-
-        Vector3 direction = (mousePosition - projectileSpawnPoint.position).normalized;
 
         // Instantiate and initialize the projectile
         var ProjectileSpawned = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);

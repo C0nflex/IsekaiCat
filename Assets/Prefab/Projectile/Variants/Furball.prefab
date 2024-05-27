@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Furball
       objectReference: {fileID: 0}
+    - target: {fileID: 663022911407321358, guid: 65881d284e8049646b152bb5db7ac98f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2054812373642001900, guid: 65881d284e8049646b152bb5db7ac98f, type: 3}
       propertyPath: m_IsTrigger
       value: 1

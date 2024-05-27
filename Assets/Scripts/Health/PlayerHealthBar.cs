@@ -8,7 +8,20 @@ public class PlayerHealthBar : HealthBar
     // Start is called before the first frame update
     void Start()
     {
-        characterHealth = playerInputs.Instance.GetComponent<Health>();
-        currentHealthBar = GameObject.Find("PlayerHealthBar").gameObject.transform.GetChild(0).GetComponent<Image>();
+        if (playerInputs.Instance != null)
+        {
+            characterHealth = playerInputs.Instance.GetComponent<Health>();
+            currentHealthBar = GameObject.Find("PlayerHealthBar").gameObject.transform.GetChild(0).GetComponent<Image>();
+        }
+    }
+
+    protected override void Update()
+    {
+        if (characterHealth == null && playerInputs.Instance != null)
+        {
+            characterHealth = playerInputs.Instance.GetComponent<Health>();
+            currentHealthBar = GameObject.Find("PlayerHealthBar").gameObject.transform.GetChild(0).GetComponent<Image>();
+        }
+        base.Update();
     }
 }
