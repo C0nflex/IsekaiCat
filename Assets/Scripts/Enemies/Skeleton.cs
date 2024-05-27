@@ -19,9 +19,12 @@ public class Skeleton : BasicEnemyBehaviour
     protected override void Start()
     {
         //skeleton stats
-        COOLDOWN = 1.5f;
+        COOLDOWN = 2f;
         SPEED = 1f;
         attackDamage = 15f;
+        arrowSpeed = 1.75f;
+        arrowKnockback = new Vector2(1f, 0);
+        arrowGravity = 0;
         health._startingHealth = 100f;
         stepCheck = transform.GetChild(2).gameObject;
         wallCheck = transform.GetChild(3).gameObject;
@@ -50,7 +53,7 @@ public class Skeleton : BasicEnemyBehaviour
         {
             var ProjectileSpawned = Instantiate(arrow, projectileSpawnPoint.position, Quaternion.identity);
             Vector3 targetPos = player.transform.position;
-            Vector3 direction = new Vector3(targetPos.x, 0, 0) * ((facingDirection == Direction.Left) ? 1 : -1);
+            Vector3 direction = new Vector3(targetPos.x, 0, 0) * ((facingDirection == Direction.Left) ? -1 : 1);
             ProjectileSpawned.GetComponent<ProjectileManager>().Init(direction, arrowSpeed, attackDamage, arrowKnockback, arrowGravity, facingDirection == Direction.Right ? false : true);
         }
     }

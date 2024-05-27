@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3285431991547402329}
   - component: {fileID: 6184478197189721119}
-  m_Layer: 1
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2543024158900233253}
   - component: {fileID: 6256025158832565490}
   - component: {fileID: 302907844300534971}
-  m_Layer: 1
+  m_Layer: 11
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -347,9 +347,11 @@ MonoBehaviour:
     m_Bits: 8
   - serializedVersion: 2
     m_Bits: 136
-  EnemyLayer:
-    serializedVersion: 2
+  EnemyLayers:
+  - serializedVersion: 2
     m_Bits: 128
+  - serializedVersion: 2
+    m_Bits: 1024
   basicAttackDamage: 20
   basicAttackKnockback: {x: 3, y: 3}
   basicAttackCooldown: 0.5
@@ -376,7 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3013239910508574810}
-  m_Layer: 1
+  m_Layer: 10
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4759829073001515297}
-  m_Layer: 1
+  m_Layer: 10
   m_Name: ProjectileSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4689228232390801036}
   - component: {fileID: 2860257848684299868}
-  m_Layer: 1
+  m_Layer: 10
   m_Name: playerLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5965859215930995063}
-  m_Layer: 1
+  m_Layer: 10
   m_Name: WallStepCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1045592813607300273}
-  m_Layer: 1
+  m_Layer: 10
   m_Name: TileStepCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

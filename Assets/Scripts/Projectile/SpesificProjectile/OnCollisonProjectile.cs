@@ -9,7 +9,7 @@ public class OnCollisonProjectile : ProjectileManager
     {
         if (collision.gameObject.tag == "Bounds")
             Destroy(gameObject);
-        else if (collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Bat")
         {
             HitCharacters(new List<Collider2D> { collision });
             Destroy(gameObject);

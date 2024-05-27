@@ -18,9 +18,9 @@ TagManager:
   - Enemy
   - Projectile
   - ProjectileToHitEnemy
+  - Bat
   - Player
   - ProjectileToHitPlayer
-  - 
   - 
   - 
   - 

@@ -31,7 +31,7 @@ public abstract class playerInputs : MonoBehaviour
     [SerializeField] private BoxCollider2D groundcheck;
     [SerializeField] protected List<LayerMask> groundMasks;
     [Header("CAMERA")]
-    [SerializeField] protected LayerMask EnemyLayer;
+    [SerializeField] protected List<LayerMask> EnemyLayers;
     [SerializeField] protected float basicAttackDamage;
     [SerializeField] protected Vector2 basicAttackKnockback;
     [Header("Abilities")]
@@ -75,7 +75,8 @@ public abstract class playerInputs : MonoBehaviour
         Instance = this;
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
-
+        EnemyLayers.Add(LayerMask.GetMask("Enemy"));
+        EnemyLayers.Add(LayerMask.GetMask("Bat"));
         gravityScale = _rigidBody.gravityScale;
 
     }
@@ -88,6 +89,7 @@ public abstract class playerInputs : MonoBehaviour
         wallPos = transform.Find("WallStepCheck").transform;
         startPos = transform.position;
         _cameraFollowObject.NewObjectToFollow(transform);
+        
     }
 
     protected virtual void Update()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class VendingMachineInputs : playerInputs
@@ -86,9 +87,16 @@ public class VendingMachineInputs : playerInputs
     private void Slam()
     {
         anim.SetTrigger("slam");
-        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(transform.position, groundSlamRadius, EnemyLayer);
+        List<Collider2D> enemiesHit = new List<Collider2D>();
+        foreach (LayerMask EnemyLayer in EnemyLayers)
+        {
+            enemiesHit.AddRange(Physics2D.OverlapCircleAll(transform.position, groundSlamRadius, EnemyLayer));
+        }
         foreach (Collider2D enemy in enemiesHit)
-            enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
+        {
+            if(enemy.tag == "Enemy")
+                enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
+        }
         base.BasicAttack();
         Debug.Log("slam");
         isMidSlam = false;
