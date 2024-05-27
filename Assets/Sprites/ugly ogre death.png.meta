@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 730df919b81709d4288fdfb934decc9e
+guid: 98c1063d830a46b429601beda0af5b66
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: evil altar_0
+      name: ugly ogre death_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 50
-        height: 52
+        width: 88
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 930810f24d403b941be034b2f3981ac7
-      internalID: -274913949
+      spriteID: 89a3b5173eefcc046a643b44b919adf4
+      internalID: 117250430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: evil altar_1
+      name: ugly ogre death_1
       rect:
         serializedVersion: 2
-        x: 50
+        x: 88
         y: 0
-        width: 50
-        height: 52
+        width: 88
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4818ee3c01d57a249b5a93458c43ca1c
-      internalID: 1205349953
+      spriteID: 1785dee9d8ae58c41ab291463aa7f4bc
+      internalID: 1488543038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: evil altar_2
+      name: ugly ogre death_2
       rect:
         serializedVersion: 2
-        x: 100
+        x: 176
         y: 0
-        width: 50
-        height: 52
+        width: 88
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6a51c24954341941bcdb8a0369188bb
-      internalID: 743066901
+      spriteID: e6c2350f3d5e52d4189e4891b6edaff2
+      internalID: -445391893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: evil altar_3
+      name: ugly ogre death_3
       rect:
         serializedVersion: 2
-        x: 150
+        x: 264
         y: 0
-        width: 50
-        height: 52
+        width: 88
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d562be43eade0f14683da15211e40dbd
-      internalID: -1743071144
+      spriteID: 6fc4ebf18b77c414b92427f5832acef8
+      internalID: -41282519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: evil altar_4
+      name: ugly ogre death_4
       rect:
         serializedVersion: 2
-        x: 200
+        x: 352
         y: 0
-        width: 50
-        height: 52
+        width: 88
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64825bb0729a9e644930c3e61685b00e
-      internalID: 1398934636
+      spriteID: a8c553959c6b4df48a39281ee2a5c704
+      internalID: -878751083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: evil altar_5
+      name: ugly ogre death_5
       rect:
         serializedVersion: 2
-        x: 250
+        x: 440
         y: 0
-        width: 50
-        height: 52
+        width: 88
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35a58511c9b12f04f9ab0adf7850bc13
-      internalID: 1390278391
+      spriteID: a77545dec4ab00a43a60c076581aeb88
+      internalID: -805584636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: evil altar_6
+      name: ugly ogre death_6
       rect:
         serializedVersion: 2
-        x: 300
+        x: 528
         y: 0
-        width: 50
-        height: 52
+        width: 88
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,8 +237,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57e0b980b5e01be4287206affb3311e0
-      internalID: -1754051937
+      spriteID: 36e0d552fe2d7dc4fb82e109f0b95d40
+      internalID: 562860548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ugly ogre death_7
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 0
+        width: 88
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18a915d2e1f8d0c4b853e3ac0e6aedf2
+      internalID: 951468844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ugly ogre death_8
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 88
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 255ee56fe4805324280a502e6d459c6a
+      internalID: -411477176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ugly ogre death_9
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 0
+        width: 88
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e491857271b97ba41a51e38337cf8c3d
+      internalID: -29969233
       vertices: []
       indices: 
       edges: []
@@ -254,13 +317,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      evil altar_0: -274913949
-      evil altar_1: 1205349953
-      evil altar_2: 743066901
-      evil altar_3: -1743071144
-      evil altar_4: 1398934636
-      evil altar_5: 1390278391
-      evil altar_6: -1754051937
+      ugly ogre death_0: 117250430
+      ugly ogre death_1: 1488543038
+      ugly ogre death_2: -445391893
+      ugly ogre death_3: -41282519
+      ugly ogre death_4: -878751083
+      ugly ogre death_5: -805584636
+      ugly ogre death_6: 562860548
+      ugly ogre death_7: 951468844
+      ugly ogre death_8: -411477176
+      ugly ogre death_9: -29969233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

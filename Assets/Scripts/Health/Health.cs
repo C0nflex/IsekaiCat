@@ -48,10 +48,9 @@ public class Health : MonoBehaviour
         {
             if (!_Dead)
             {
-                //_anim.SetTrigger("die");
+                _anim.SetTrigger("die");
                 _Dead = true;
             }
-            Destroy(gameObject);
         }
         onHurt?.Invoke(this, new EventArgs { });
     }
@@ -88,5 +87,10 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(regenInterval);
         }
+    }
+    
+    private void Kill()
+    {
+        Destroy(gameObject);
     }
 }
