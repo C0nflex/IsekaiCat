@@ -113,6 +113,8 @@ public class DialogueManager : MonoBehaviour
             vendingMachineForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
             playerInputs.Instance.updateStartPos(startVector);
+            Destroy(GameManager.Instance.CurrentEnemies);
+            Instantiate(GameManager.Instance.EnemiesSpawnPrefab);
             //playerInputs.Instance.EnableMovement();
             //add life force 0
         }
@@ -121,6 +123,8 @@ public class DialogueManager : MonoBehaviour
             vendingMachineForSwitch.SetActive(false);
             swordForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
+            Destroy(GameManager.Instance.CurrentEnemies);
+            Instantiate(GameManager.Instance.EnemiesSpawnPrefab);
             //add life force 0
         }
         else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword")

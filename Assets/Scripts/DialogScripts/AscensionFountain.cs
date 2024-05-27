@@ -40,7 +40,7 @@ public class AssencionFountain : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     //if (playerInputs.Instance.isEnoughSoul()==false)
-                    if (playerInputs.Instance.SoulLevel<15)
+                    if (playerInputs.Instance.SoulLevel<10)
                     {
                         Debug.Log(playerInputs.Instance.SoulLevel);
                         notEnoughSoulLevelDiag();

@@ -70,7 +70,7 @@ public abstract class playerInputs : MonoBehaviour
     public bool isDead = false;
     //public GameObject isDeadText;
     public GameObject respawnPre;
-    public int SoulLevel = 0; //TODO:  temp value 
+    public int SoulLevel; //TODO:  temp value 
 
 
     private void Awake()
@@ -92,6 +92,7 @@ public abstract class playerInputs : MonoBehaviour
         wallPos = transform.Find("WallStepCheck").transform;
         startPos = transform.position;
         _cameraFollowObject.NewObjectToFollow(transform);
+        SoulLevel = 20;
         
     }
 

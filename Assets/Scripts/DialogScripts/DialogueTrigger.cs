@@ -11,6 +11,6 @@ public class DialogueTrigger : MonoBehaviour
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         gameObject.SetActive(false);
         GameManager.Instance.PlayMusic2();
-        Instantiate(GameManager.Instance.EnemiesSpawnPrefab);
+        GameManager.Instance.CurrentEnemies =  Instantiate(GameManager.Instance.EnemiesSpawnPrefab);
     }
 }
