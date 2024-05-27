@@ -48,10 +48,9 @@ public class Health : MonoBehaviour
         {
             if (!_Dead)
             {
-                //_anim.SetTrigger("die");
+                _anim.SetTrigger("die");
                 _Dead = true;
             }
-            Destroy(gameObject);
         }
         onHurt?.Invoke(this, new EventArgs { });
     }
@@ -80,7 +79,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator PassiveRegen()
     {
-        while (!_Dead)
+        while (!_Dead && gameObject.GetComponent<playerInputs>() != null)
         {
             if (_currentHealth < _startingHealth)
             {
@@ -88,5 +87,10 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(regenInterval);
         }
+    }
+    
+    private void Kill()
+    {
+        Destroy(gameObject);
     }
 }

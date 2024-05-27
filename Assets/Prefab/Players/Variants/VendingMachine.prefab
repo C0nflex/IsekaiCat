@@ -54,27 +54,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Size.x
-      value: 0.6046982
+      value: 0.61349106
       objectReference: {fileID: 0}
     - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Size.y
-      value: 0.5984745
+      value: 0.7650528
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Offset.x
-      value: -0.037303925
+      value: 0.029447556
       objectReference: {fileID: 0}
     - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Offset.y
-      value: -0.19803333
+      value: -0.023885727
       objectReference: {fileID: 0}
     - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
+      value: 1.234375
       objectReference: {fileID: 0}
     - target: {fileID: 2543024158900233253, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
+      value: 0.8125
       objectReference: {fileID: 0}
     - target: {fileID: 2727767028687576215, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Name
@@ -88,6 +92,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 313e0d329642f1f4e8f3a6e8223507bc, type: 2}
+    - target: {fileID: 4759829073001515297, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4759829073001515297, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.372
+      objectReference: {fileID: 0}
+    - target: {fileID: 4759829073001515297, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 6184478197189721119, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Size.x
       value: 0.53211594
@@ -99,9 +115,10 @@ PrefabInstance:
     - target: {fileID: 8717855211577919005, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ece488fea607ff140b1a15df0260ea6e, type: 3}
+      objectReference: {fileID: 21300000, guid: b5379ca1542d3c941baf3fca4ebe98c5, type: 3}
     m_RemovedComponents:
     - {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+    - {fileID: 6256025158832565490, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -162,8 +179,8 @@ MonoBehaviour:
   basicAttackCooldown: 2
   rangedAttackCooldown: 1
   IsFacingRight: 1
-  isMidJump: 0
   canMove: 0
+  rangedAttackParticles: {fileID: 0}
   projectileSpawnPoint: {fileID: 4565736829246676928}
   shockwaveGrenadePrefab: {fileID: 5210941307254988184, guid: 1b29012e707f1c84d92685848f252b00, type: 3}
   shockwaveGrenadeSpeed: 1

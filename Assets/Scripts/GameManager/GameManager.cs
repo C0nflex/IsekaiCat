@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    [SerializeField] public GameObject arrow;
     public cameraFollowObject _cameraFollowObject;
 
     [SerializeField] private AudioClip musicClip;

@@ -29,7 +29,7 @@ public abstract class playerInputs : MonoBehaviour
     [SerializeField] private float jumpHangGravityMultiplier;
     [Header("CHECKS")]
     [SerializeField] private BoxCollider2D groundcheck;
-    [SerializeField] List<LayerMask> groundMasks;
+    [SerializeField] protected List<LayerMask> groundMasks;
     [Header("CAMERA")]
     [SerializeField] protected LayerMask EnemyLayer;
     [SerializeField] protected float basicAttackDamage;
@@ -41,7 +41,7 @@ public abstract class playerInputs : MonoBehaviour
     private bool rangedAttackOnCooldown = false;
     private cameraFollowObject _cameraFollowObject;
     protected Rigidbody2D _rigidBody;
-    private Animator anim;
+    protected Animator anim;
     public bool IsFacingRight = true;
     private float _fallSpeedYDampingChangeThreshold;
 
@@ -76,7 +76,7 @@ public abstract class playerInputs : MonoBehaviour
 
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         _cameraFollowObject = GameManager.Instance._cameraFollowObject;
         _fallSpeedYDampingChangeThreshold = cameraManger.Instance._fallSpeedYDamoingChangeThreshold;
@@ -86,7 +86,7 @@ public abstract class playerInputs : MonoBehaviour
         _cameraFollowObject.NewObjectToFollow(transform);
     }
 
-    void Update()
+    protected virtual void Update()
     {
 
         if (canMove)
@@ -97,7 +97,7 @@ public abstract class playerInputs : MonoBehaviour
             HandleAbilites();
             PlayerRestartGame();
             PlayerRestartPosition();
-            anim.SetFloat("speed", Mathf.Abs(xInput));
+            //anim.SetFloat("speed", Mathf.Abs(xInput));
 
             if (_rigidBody.velocity.y < _fallSpeedYDampingChangeThreshold && !cameraManger.Instance.isLerpingYDamping && !cameraManger.Instance.LerpedFromPlayerFalling)
             {
@@ -116,19 +116,15 @@ public abstract class playerInputs : MonoBehaviour
             #endregion
 
             if (Mathf.Abs(_rigidBody.velocity.y) < jumpHangTimeThreshold)
-            {
                 InHangTime();
-            }
             else if (_rigidBody.velocity.y < 0)
-            {
                 InFallTime();
-            }
             else
-            {
-                _rigidBody.gravityScale = gravityScale;
-            }
+                ResetGravity();
         }
     }
+
+    protected virtual void ResetGravity() => _rigidBody.gravityScale = gravityScale;
 
     protected virtual void InHangTime()
     {
@@ -201,7 +197,7 @@ public abstract class playerInputs : MonoBehaviour
         xInput = Input.GetAxis("Horizontal");
     }
 
-    private void MoveWithInput()
+    protected virtual void MoveWithInput()
     {
         float targetSpeed = xInput * speed;
 

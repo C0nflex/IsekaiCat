@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -95,7 +95,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: evil altar_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 930810f24d403b941be034b2f3981ac7
+      internalID: -274913949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evil altar_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4818ee3c01d57a249b5a93458c43ca1c
+      internalID: 1205349953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evil altar_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a51c24954341941bcdb8a0369188bb
+      internalID: 743066901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evil altar_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d562be43eade0f14683da15211e40dbd
+      internalID: -1743071144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evil altar_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 50
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64825bb0729a9e644930c3e61685b00e
+      internalID: 1398934636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evil altar_5
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 50
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35a58511c9b12f04f9ab0adf7850bc13
+      internalID: 1390278391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evil altar_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 50
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e0b980b5e01be4287206affb3311e0
+      internalID: -1754051937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +253,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      evil altar_0: -274913949
+      evil altar_1: 1205349953
+      evil altar_2: 743066901
+      evil altar_3: -1743071144
+      evil altar_4: 1398934636
+      evil altar_5: 1390278391
+      evil altar_6: -1754051937
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

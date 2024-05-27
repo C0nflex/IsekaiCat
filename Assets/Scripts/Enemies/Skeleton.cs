@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class Skeleton : BasicEnemyBehaviour
 {
-    protected override IEnumerator AttackOnCooldown()
-    {
-        while (true)
-        {
-            Attack();
-            yield return new WaitForSeconds(COOLDOWN);
-        }
-    }
+    private GameObject arrow;
+    private Transform projectileSpawnPoint;
+    [SerializeField] private float arrowSpeed;
+    [SerializeField] private Vector2 arrowKnockback;
+    [SerializeField] private float arrowGravity;
 
     protected override void Awake()
     {
@@ -22,10 +19,14 @@ public class Skeleton : BasicEnemyBehaviour
     protected override void Start()
     {
         //skeleton stats
-        COOLDOWN = 1f;
+        COOLDOWN = 1.5f;
         SPEED = 1f;
-        attackDamage = 20f;
+        attackDamage = 15f;
         health._startingHealth = 100f;
+        stepCheck = transform.GetChild(2).gameObject;
+        wallCheck = transform.GetChild(3).gameObject;
+        projectileSpawnPoint = transform.GetChild(4).transform;
+        arrow = GameManager.Instance.arrow;
         base.Start();
     }
 
@@ -34,11 +35,23 @@ public class Skeleton : BasicEnemyBehaviour
     {
         base.Update();
     }
-
+    protected override void Flip()
+    {
+        // Flip the localRotation.y by setting the correct Euler angles
+        if (facingDirection == Direction.Right)
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        else
+            transform.localRotation = Quaternion.Euler(0, 180f, 0);
+    }
+    
     protected override void Attack()
     {
-        if (math.abs(attackPoint.transform.position.x - player.transform.position.x) < 0.8 &&
-           math.abs(attackPoint.transform.position.y - player.transform.position.y) < 0.8)
-            player.GetComponent<Health>().TakeDamage(attackDamage, knockBack, gameObject);
+        if (player != null)
+        {
+            var ProjectileSpawned = Instantiate(arrow, projectileSpawnPoint.position, Quaternion.identity);
+            Vector3 targetPos = player.transform.position;
+            Vector3 direction = new Vector3(targetPos.x, 0, 0) * ((facingDirection == Direction.Left) ? 1 : -1);
+            ProjectileSpawned.GetComponent<ProjectileManager>().Init(direction, arrowSpeed, attackDamage, arrowKnockback, arrowGravity, facingDirection == Direction.Right ? false : true);
+        }
     }
 }
