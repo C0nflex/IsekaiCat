@@ -11,6 +11,7 @@ public class Skeleton : BasicEnemyBehaviour
     [SerializeField] private Vector2 arrowKnockback;
     [SerializeField] private float arrowGravity;
 
+
     protected override void Awake()
     {
         base.Awake();

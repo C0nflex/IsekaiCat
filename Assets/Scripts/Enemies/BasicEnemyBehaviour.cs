@@ -29,6 +29,7 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     virtual protected void Die()
     {
         Destroy(gameObject);
+        
     }
     virtual protected IEnumerator AttackOnCooldown()
     {
