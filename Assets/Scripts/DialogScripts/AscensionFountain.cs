@@ -39,7 +39,8 @@ public class AssencionFountain : MonoBehaviour
                 // Check if the 'E' key is pressed
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (playerInputs.Instance.isEnoughSoul()==false)
+                    //if (playerInputs.Instance.isEnoughSoul()==false)
+                    if (playerInputs.Instance.SoulLevel<0)
                     {
                         notEnoughSoulLevelDiag();
                     }
@@ -65,13 +66,14 @@ public class AssencionFountain : MonoBehaviour
 
     void notEnoughSoulLevelDiag()
     {
+        playerInputs.Instance.swordAtEnd();
         FindObjectOfType<DialogueManager>().StartDialogue(notEnoughSoul);
     }
 
     void InteractWithGuyAsCat()
     {
+        playerInputs.Instance.catAtEnd();
         FindObjectOfType<DialogueManager>().StartDialogue(dialogueCat);
-        Debug.Log("now end");
     }
 
     void InteractWithGuyAsVendingMachine()

@@ -22,6 +22,11 @@ public class DialogueManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private Animator robotAnimationController;
     [SerializeField] private Animator EvilrobotAnimationController;
+    [SerializeField] private GameObject endingScreen;
+    [SerializeField] private GameObject vendingMachineForSwitch;
+    [SerializeField] private GameObject catForSwitch;
+
+    private Vector2 startVector = new Vector2(-7.15f, -1.65f);
 
 
     // Start is called before the first frame update
@@ -102,15 +107,21 @@ public class DialogueManager : MonoBehaviour
             enemy.EnableMovement();
         }
         if(playerInputs.Instance.isCatAtEnd==true && playerInputs.Instance.returnPlayerName()=="Cat") {
-
+            
+            catForSwitch.SetActive(false);
+            vendingMachineForSwitch.SetActive(true);
+            playerInputs.Instance.transform.position = startVector;
+            //add life force 0
         }
         else if (playerInputs.Instance.isVendingAtEnd == true && playerInputs.Instance.returnPlayerName() == "VendingMachine")
         {
-            Debug.Log("logics for vending machine player at end");
+            playerInputs.Instance.transform.position = startVector;
+            //add life force 0
         }
         else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword")
         {
-
+            EventManager.OnTimerStop();
+            endingScreen.SetActive(true);
         }
     }
 

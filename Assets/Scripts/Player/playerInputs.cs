@@ -67,7 +67,7 @@ public abstract class playerInputs : MonoBehaviour
     public bool isCatAtEnd = false;
     public bool isVendingAtEnd = false;
     public bool isSwordAtEnd = false;
-    public int SoulLevel = 0;
+    public int SoulLevel = 1; //TODO:  temp value 
 
 
     private void Awake()
@@ -435,7 +435,7 @@ public abstract class playerInputs : MonoBehaviour
         isVendingAtEnd = true;
     }
 
-    public bool isEnoughSoul()
+    public bool isEnoughSoul() //TODO:  temp value 
     {
         if(SoulLevel>0)
         {
