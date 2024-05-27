@@ -40,8 +40,12 @@ public class OnTimerProjectileManager : ProjectileManager
     {
         var UniqueColliders = Characters.Select(x => x.gameObject).ToHashSet().Select(x => x.GetComponent<Collider2D>());
         foreach (Collider2D character in UniqueColliders)
+        {
             if (character.GetComponent<Health>() != null)
-                character.GetComponent<Health>().TakeDamage(damageToDeal, knockbackToDeal *  (1 - Vector3.Distance(character.transform.position,transform.position)/ explosionRadius) , gameObject);
+                character.GetComponent<Health>().TakeDamage(damageToDeal, knockbackToDeal * (1 - Vector3.Distance(character.transform.position, transform.position) / explosionRadius), gameObject);
+            else if (character.transform.parent != null && character.transform.parent.GetComponent<Health>() != null)
+                character.transform.parent.GetComponent<Health>().TakeDamage(damageToDeal, knockbackToDeal * (1 - Vector3.Distance(character.transform.parent.transform.position, transform.position) / explosionRadius), gameObject);
+        }
     }
 
 

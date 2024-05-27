@@ -18,8 +18,8 @@ TagManager:
   - Enemy
   - Projectile
   - ProjectileToHitEnemy
+  - Player
   - ProjectileToHitPlayer
-  - 
   - 
   - 
   - 
