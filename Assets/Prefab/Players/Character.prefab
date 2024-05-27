@@ -214,6 +214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingHealth: 100
   hurt: 0
+  regenRate: 4
+  regenInterval: 1
 --- !u!95 &4204747956364392837
 Animator:
   serializedVersion: 5
@@ -354,6 +356,7 @@ MonoBehaviour:
   rangedAttackCooldown: 0.5
   IsFacingRight: 0
   canMove: 0
+  rangedAttackParticles: {fileID: 0}
   jumpspeed: 6.5
   jumpCutMultiplier: 0.1
   attackPoint: {fileID: 3013239910508574810}
@@ -436,7 +439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4689228232390801036}
   - component: {fileID: 2860257848684299868}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: playerLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -20,6 +20,18 @@ public class ProjectileManager : MonoBehaviour
         this.projectileGravity = projectileGravity;
         GetComponent<Rigidbody2D>().gravityScale = projectileGravity;
     }
+    public void Init(Vector3 direction, float speed, float damageToDeal, Vector2 knockbackToDeal, float projectileGravity, bool isFacingRight)
+    {
+        this.direction = direction;
+        this.speed = speed;
+        this.damageToDeal = damageToDeal;
+        this.knockbackToDeal = knockbackToDeal;
+        this.projectileGravity = projectileGravity;
+        float facingDirection = isFacingRight ? 0 : 180;
+        transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y + facingDirection, transform.rotation.z));
+
+        GetComponent<Rigidbody2D>().gravityScale = projectileGravity;
+    }
     // Update is called once per frame
     protected virtual void FixedUpdate()
     {

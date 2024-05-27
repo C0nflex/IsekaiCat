@@ -23,6 +23,7 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     protected LayerMask groundMask;
     private bool bounce = false;
     private bool canMove= false;
+    private bool isAttacking = false;
     virtual protected void Die()
     {
         Destroy(gameObject);
@@ -48,20 +49,15 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     {
         player = playerInputs.Instance;
         objectRenderer = GetComponent<Renderer>();
-        stepCheck = transform.GetChild(2).gameObject;
-        wallCheck = transform.GetChild(3).gameObject;
         groundMask = LayerMask.GetMask("ground");
+
         if(player.transform.position.x < transform.position.x)
-        {
             facingDirection = Direction.Right;
-            Flip();
-        }
         else
-        {
             facingDirection = Direction.Left;
-            Flip();
-        }
-        StartCoroutine(AttackOnCooldown());
+
+        Flip();
+        //StartCoroutine(AttackOnCooldown());
     }
 
     // Update is called once per frame
@@ -71,12 +67,11 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
         {
             MoveTowardsTarget();
         }
-    }
-    private bool IsGrounded()
-    {
-        // Adjust the ground check implementation as needed
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
-        return hit.collider != null;
+        if(canMove && !isAttacking)
+        {
+            isAttacking = true;
+            StartCoroutine(AttackOnCooldown());
+        }
     }
     protected virtual void MoveTowardsTarget()
     {

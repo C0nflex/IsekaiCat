@@ -41,6 +41,8 @@ public class Ogre : BasicEnemyBehaviour
         attackDamage = 30f;
         health._startingHealth = 150f;
         animator = GetComponent<Animator>();
+        stepCheck = transform.GetChild(2).gameObject;
+        wallCheck = transform.GetChild(3).gameObject;
         base.Start();
     }
 
