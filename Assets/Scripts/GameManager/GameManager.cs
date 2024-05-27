@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioClip musicClip;
     [SerializeField] private AudioClip GamemusicClip;
+    public Material Flash;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
