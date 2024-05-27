@@ -27,6 +27,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject vendingMachineForSwitch;
     [SerializeField] private GameObject catForSwitch;
     [SerializeField] private GameObject swordForSwitch;
+    [SerializeField] private GameObject fishForSwitch;
+    [SerializeField] private GameObject pressRToRestart;
 
     private Vector2 startVector = new Vector2(-7.15f, -1.65f); // this is the coords for spawn
     //private Vector2 startVector = new Vector2(18.86f, 33.97f);
@@ -139,10 +141,12 @@ public class DialogueManager : MonoBehaviour
             ResetEnemies();
             //add life force 0
         }
-        else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword")
+        else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword" && (playerInputs.Instance.returnPlayerSoul()>10))
         {
             EventManager.OnTimerStop();
-            //endingScreen.SetActive(true);
+            pressRToRestart.SetActive(true);
+            swordForSwitch.SetActive(false);
+            fishForSwitch.SetActive(true);
             //startRestart.SetActive(true); // neeed a different button
             // add button for restart scene :)
         }
