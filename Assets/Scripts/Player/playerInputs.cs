@@ -94,6 +94,7 @@ public abstract class playerInputs : MonoBehaviour
 
     protected virtual void Update()
     {
+        anim.SetFloat("speed", Mathf.Abs(xInput));
 
         if (canMove)
         {
