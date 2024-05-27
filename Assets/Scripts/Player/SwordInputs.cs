@@ -69,6 +69,7 @@ public class SwoardInputs : playerInputs
     {
         if (isDashing)
         {
+            anim.SetBool("dashing", true);
             Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(transform.position, attackRadius, EnemyLayer);
             enemiesHit = enemiesHit.Where(x => !enemiesAlreadyHitByDash.Contains(x)).ToArray();
             foreach (var collider in enemiesHit)
@@ -81,6 +82,10 @@ public class SwoardInputs : playerInputs
         }
         lastfloatTimer += Time.deltaTime;
         FlightBar.fillAmount = currFloatAmount;
+        if(!isDashing)
+        {
+            anim.SetBool("dashing", false);
+        }
         base.Update();
     }
 
@@ -114,6 +119,7 @@ public class SwoardInputs : playerInputs
 
     protected override void BasicAttack()
     {
+        anim.SetTrigger("slash");
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, EnemyLayer);
         foreach (Collider2D enemy in enemiesHit)
         {
