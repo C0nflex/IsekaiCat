@@ -84,14 +84,6 @@ public class Health : MonoBehaviour
         else
         {
             _Dead = true;
-            if (!_Dead)
-            {
-                if (gameObject.tag == "enemy")
-                {
-
-                    //GetComponentInParent<EnemyPatrol>().enabled = false;
-                }
-            }
 
         }
     }
@@ -119,5 +111,10 @@ public class Health : MonoBehaviour
     {
         _currentHealth = _startingHealth;
         _Dead = false;
+    }
+
+    private void Respawn()
+    {
+        playerInputs.Instance.isDead = true;
     }
 }
