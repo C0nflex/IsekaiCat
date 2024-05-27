@@ -70,7 +70,6 @@ public class SwoardInputs : playerInputs
         if (isDashing)
         {
             anim.SetBool("dashing", true);
-            enemiesHit = enemiesHit.Where(x => !enemiesAlreadyHitByDash.Contains(x)).ToArray();
             List<Collider2D> enemiesHit = new List<Collider2D>();
             foreach (LayerMask EnemyLayer in EnemyLayers)
             {
