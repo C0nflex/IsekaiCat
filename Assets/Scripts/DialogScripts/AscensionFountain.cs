@@ -40,7 +40,7 @@ public class AssencionFountain : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     //if (playerInputs.Instance.isEnoughSoul()==false)
-                    if (playerInputs.Instance.SoulLevel<10)
+                    if (playerInputs.Instance.returnPlayerSoul()<10)
                     {
                         Debug.Log(playerInputs.Instance.SoulLevel);
                         notEnoughSoulLevelDiag();
@@ -53,7 +53,11 @@ public class AssencionFountain : MonoBehaviour
                     {
                         InteractWithGuyAsVendingMachine();
                     }
-                    
+                    else if (playerName == "Sword")
+                    {
+                        InteractWithGuyAsSwordMachine();
+                    }
+
                     // Call a method to perform the action on the flag
                     //InteractWithFlag();
                 }
@@ -82,5 +86,11 @@ public class AssencionFountain : MonoBehaviour
     {
         playerInputs.Instance.VedingAtEnd();
         FindObjectOfType<DialogueManager>().StartDialogue(dialogueVending);
+    }
+
+    void InteractWithGuyAsSwordMachine()
+    {
+        playerInputs.Instance.swordAtEnd();
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogueSword);
     }
 }

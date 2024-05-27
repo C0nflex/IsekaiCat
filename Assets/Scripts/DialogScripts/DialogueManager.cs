@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     private BasicEnemyBehaviour[] allEnemies;
     [SerializeField]
     private GameObject mainMenuContainer;
+    //[SerializeField] private GameObject startRestart; need a different button
 
     //public List<AudioClip> sentenceAudioClips;
     [SerializeField] private List<AudioClip> voiceLines;
@@ -142,6 +143,7 @@ public class DialogueManager : MonoBehaviour
         {
             EventManager.OnTimerStop();
             endingScreen.SetActive(true);
+            //startRestart.SetActive(true); // neeed a different button
             // add button for restart scene :)
         }
         playerInputs.Instance.EnableMovement();

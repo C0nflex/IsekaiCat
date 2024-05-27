@@ -435,7 +435,7 @@ public abstract class playerInputs : MonoBehaviour
     }
     public void swordAtEnd()
     {
-        isVendingAtEnd = true;
+        isSwordAtEnd = true;
     }
 
     public bool isEnoughSoul() //TODO:  temp value 
@@ -454,6 +454,11 @@ public abstract class playerInputs : MonoBehaviour
     public void increaseSoulLevel(int level)
     {
         SoulLevel += level;
+    }
+
+    public int returnPlayerSoul()
+    {
+        return SoulLevel;
     }
 
 }
