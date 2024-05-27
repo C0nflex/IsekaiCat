@@ -25,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject endingScreen;
     [SerializeField] private GameObject vendingMachineForSwitch;
     [SerializeField] private GameObject catForSwitch;
+    [SerializeField] private GameObject swordForSwitch;
 
     private Vector2 startVector = new Vector2(-7.15f, -1.65f);
 
