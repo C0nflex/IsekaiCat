@@ -69,8 +69,12 @@ public class SwoardInputs : playerInputs
     {
         if (isDashing)
         {
-            Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(transform.position, attackRadius, EnemyLayer);
-            enemiesHit = enemiesHit.Where(x => !enemiesAlreadyHitByDash.Contains(x)).ToArray();
+            List<Collider2D> enemiesHit = new List<Collider2D>();
+            foreach (LayerMask EnemyLayer in EnemyLayers)
+            {
+                enemiesHit.AddRange(Physics2D.OverlapCircleAll(transform.position, attackRadius, EnemyLayer));
+            }
+            enemiesHit = enemiesHit.Where(x => !enemiesAlreadyHitByDash.Contains(x)).ToList();
             foreach (var collider in enemiesHit)
                 if (isDashing && collider.gameObject.tag == "Enemy")
                 {
@@ -114,10 +118,15 @@ public class SwoardInputs : playerInputs
 
     protected override void BasicAttack()
     {
-        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, EnemyLayer);
+        List<Collider2D> enemiesHit = new List<Collider2D>();
+        foreach (LayerMask EnemyLayer in EnemyLayers)
+        {
+            enemiesHit.AddRange(Physics2D.OverlapCircleAll(transform.position, attackRadius, EnemyLayer));
+        }
         foreach (Collider2D enemy in enemiesHit)
         {
-            enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
+            if (enemy.tag == "Enemy")
+                enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
         }
         base.BasicAttack();
     }

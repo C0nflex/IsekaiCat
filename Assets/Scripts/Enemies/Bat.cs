@@ -17,7 +17,7 @@ public class Bat : BasicEnemyBehaviour
         {
             Attack();
             StartCoroutine(resetVelocity());
-            //health.TakeDamage(0, player.basicAttackKnockback, player.gameObject);
+            health.TakeDamage(0, new Vector2(3f, 3f), player.gameObject);
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -25,7 +25,7 @@ public class Bat : BasicEnemyBehaviour
         if (collision.gameObject.tag == "Player")
         {
             StartCoroutine(resetVelocity());
-            //health.TakeDamage(0, player.basicAttackKnockback, player.gameObject);
+            //health.TakeDamage(0, new Vector2(1.5f, 1.5f), player.gameObject);
         }
     }
     protected override void Attack()
