@@ -30,13 +30,11 @@ public class Bat : BasicEnemyBehaviour
     }
     protected override void Attack()
     {
-        //if (math.abs(attackPoint.transform.position.x - player.transform.position.x) < 0.8 &&
-            //math.abs(attackPoint.transform.position.y - player.transform.position.y) < 0.8)
-            player.GetComponent<Health>().TakeDamage(attackDamage, knockBack, gameObject);
+        player.GetComponent<Health>().TakeDamage(attackDamage, knockBack, gameObject);
     }
     protected override IEnumerator AttackOnCooldown()
     {
-        yield return new WaitForSeconds(COOLDOWN);
+        yield return null;
     }
 
     protected override void Awake()
@@ -63,8 +61,6 @@ public class Bat : BasicEnemyBehaviour
         //ogre stats
         health.onHurt += resetVelocity;
         base.Start();
-        
-        
     }
     protected override void Flip()
     {

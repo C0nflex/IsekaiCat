@@ -11,9 +11,12 @@ public class Ogre : BasicEnemyBehaviour
     private Animator animator;
     protected override void Attack()
     {
-        if (math.abs(attackPoint.transform.position.x - player.transform.position.x) < 0.8 &&
+        if (player != null)
+        {
+            if (math.abs(attackPoint.transform.position.x - player.transform.position.x) < 0.8 &&
             math.abs(attackPoint.transform.position.y - player.transform.position.y) < 0.8)
-            player.GetComponent<Health>().TakeDamage(attackDamage, knockBack, gameObject);
+                player.GetComponent<Health>().TakeDamage(attackDamage, knockBack, gameObject);
+        }
         
     }
     private void PerformAttack()
@@ -41,6 +44,8 @@ public class Ogre : BasicEnemyBehaviour
         attackDamage = 30f;
         health._startingHealth = 150f;
         animator = GetComponent<Animator>();
+        stepCheck = transform.GetChild(2).gameObject;
+        wallCheck = transform.GetChild(3).gameObject;
         base.Start();
     }
 

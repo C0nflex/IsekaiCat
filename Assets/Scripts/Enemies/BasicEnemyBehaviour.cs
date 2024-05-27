@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using Cinemachine;
 
 public abstract class BasicEnemyBehaviour : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     protected LayerMask groundMask;
     private bool bounce = false;
     private bool canMove= false;
+    private bool firstTimeOnCamera = true;
+    private bool isAttacking = false;
     virtual protected void Die()
     {
         Destroy(gameObject);
@@ -31,7 +34,8 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     {
         while (true)
         {
-            Attack();
+            if(canMove)
+                Attack();
             yield return new WaitForSeconds(COOLDOWN);
         }
     }
@@ -46,41 +50,51 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     }
     protected virtual void Start()
     {
+        //virtualCamera = GameObject.Find("Virtual Camera");
         player = playerInputs.Instance;
         objectRenderer = GetComponent<Renderer>();
-        stepCheck = transform.GetChild(2).gameObject;
-        wallCheck = transform.GetChild(3).gameObject;
         groundMask = LayerMask.GetMask("ground");
         if(player.transform.position.x < transform.position.x)
-        {
             facingDirection = Direction.Right;
-            Flip();
-        }
         else
-        {
             facingDirection = Direction.Left;
-            Flip();
-        }
-        StartCoroutine(AttackOnCooldown());
+
+        Flip();
+        //StartCoroutine(AttackOnCooldown());
     }
 
     // Update is called once per frame
+    private bool IsVisibleByCamera(Camera camera)
+    {
+        if (camera == null)
+        {
+            return false;
+        }
+
+        Plane[] frustumPlanes = GeometryUtility.CalculateFrustumPlanes(camera);
+        return GeometryUtility.TestPlanesAABB(frustumPlanes, objectRenderer.bounds);
+    }
     protected virtual void Update()
     {
-        if (canMove && objectRenderer.isVisible && player != null)
+        if(objectRenderer.isVisible && !firstTimeOnCamera)
+            canMove = true;
+        else
+            canMove = false;
+
+        if (canMove)
         {
             MoveTowardsTarget();
         }
-    }
-    private bool IsGrounded()
-    {
-        // Adjust the ground check implementation as needed
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
-        return hit.collider != null;
+        if(canMove && !isAttacking)
+        {
+            isAttacking = true;
+            StartCoroutine(AttackOnCooldown());
+        }
     }
     protected virtual void MoveTowardsTarget()
     {
         Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+
         var StepcircleBound = Physics2D.OverlapCircle(stepCheck.transform.position, 0.001f, groundMask);
         var WallCircleBound = Physics2D.OverlapCircle(wallCheck.transform.position, 0.001f, groundMask);
         if (StepcircleBound != null && WallCircleBound == null && !bounce)
@@ -126,6 +140,6 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
 
     public void EnableMovement()
     {
-        canMove = true;
+        firstTimeOnCamera = false;
     }
 }

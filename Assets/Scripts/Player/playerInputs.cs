@@ -97,7 +97,7 @@ public abstract class playerInputs : MonoBehaviour
             HandleAbilites();
             PlayerRestartGame();
             PlayerRestartPosition();
-            anim.SetFloat("speed", Mathf.Abs(xInput));
+            //anim.SetFloat("speed", Mathf.Abs(xInput));
 
             if (_rigidBody.velocity.y < _fallSpeedYDampingChangeThreshold && !cameraManger.Instance.isLerpingYDamping && !cameraManger.Instance.LerpedFromPlayerFalling)
             {
