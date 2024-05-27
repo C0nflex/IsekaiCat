@@ -142,7 +142,7 @@ public class DialogueManager : MonoBehaviour
         else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword")
         {
             EventManager.OnTimerStop();
-            endingScreen.SetActive(true);
+            //endingScreen.SetActive(true);
             //startRestart.SetActive(true); // neeed a different button
             // add button for restart scene :)
         }
