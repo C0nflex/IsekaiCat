@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private List<AudioClip> voiceLines;
     private AudioSource audioSource;
     [SerializeField] private Animator robotAnimationController;
+    [SerializeField] private Animator EvilrobotAnimationController;
 
 
     // Start is called before the first frame update
@@ -35,11 +36,14 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        EvilrobotAnimationController.speed = 1;
+        robotAnimationController.speed = 1;
+        playerInputs.Instance.DisableMovement();
         mainMenuContainer.SetActive(false);
         animator.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
         sentences.Clear();
-        foreach(string sentence in dialogue.sentences)
+        foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -49,7 +53,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if(sentences.Count == 0) {
+        if (sentences.Count == 0)
+        {
             EndDialogue();
             return;
         }
@@ -68,7 +73,7 @@ public class DialogueManager : MonoBehaviour
             audioSource.Play();
         }
         dialogueText.text = "";
-        foreach(char c in sentence.ToCharArray())
+        foreach (char c in sentence.ToCharArray())
         {
             dialogueText.text += c;
             yield return null;
@@ -82,7 +87,9 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        playerInputs.Instance.DisableMovement();
         robotAnimationController.speed = 0;
+        EvilrobotAnimationController.speed = 0;
         if (audioSource.isPlaying)
         {
             audioSource.Stop();
@@ -90,7 +97,7 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", false);
         EventManager.OnTimerStart();
         pushP.EnableMovement();
-        foreach(BasicEnemyBehaviour enemy in allEnemies)
+        foreach (BasicEnemyBehaviour enemy in allEnemies)
         {
             enemy.EnableMovement();
         }

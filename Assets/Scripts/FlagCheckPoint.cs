@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class FlagCheckPoint : MonoBehaviour
@@ -11,8 +13,7 @@ public class FlagCheckPoint : MonoBehaviour
     // Distance at which the player can interact with the flag
     public float interactionDistance = 2.0f;
 
-    public GameObject player2;
-
+    [SerializeField] private GameObject text;
 
 
     void Update()
@@ -51,5 +52,18 @@ public class FlagCheckPoint : MonoBehaviour
     {
         //player2.GetComponent<playerInputs>().setPlayerCheckPoint
         playerInputs.Instance.setPlayerCheckPoint(gameObject.transform.position);
+        StartCoroutine(ActivateTextForTwoSeconds());
+    }
+
+    private IEnumerator ActivateTextForTwoSeconds()
+    {
+        // Activate the text GameObject
+        text.SetActive(true);
+
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(2);
+
+        // Deactivate the text GameObject
+        text.SetActive(false);
     }
 }
