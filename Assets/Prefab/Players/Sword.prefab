@@ -776,9 +776,7 @@ MonoBehaviour:
     m_Bits: 8
   - serializedVersion: 2
     m_Bits: 136
-  EnemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
+  EnemyLayers: []
   basicAttackDamage: 20
   basicAttackKnockback: {x: 4, y: 4}
   basicAttackCooldown: 0.2
@@ -798,7 +796,7 @@ MonoBehaviour:
   floatBarDecreaseSpeed: 0.2
   floatBarIncreaseSpeed: 0.3
   attackPoint: {fileID: 7170997940920943130}
-  attackRadius: 0.3
+  attackRadius: 1
   isDashing: 0
   dashingSpeed: 36
   dashingTime: 0.2
