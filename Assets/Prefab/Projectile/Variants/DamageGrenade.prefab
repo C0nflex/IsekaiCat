@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8500148286602870522, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
       propertyPath: m_LinearDrag
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8500148286602870522, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
       propertyPath: m_AngularDrag
@@ -110,42 +110,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9119510093527574566, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
       propertyPath: timeToWaitForExplosion
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1844020752752972215, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -8856726760523896732}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
---- !u!50 &1224441620344527090 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 8500148286602870522, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
-  m_PrefabInstance: {fileID: 7280210626822874632}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8980115968018036671 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1844020752752972215, guid: a1ad97231a34fa44cadd5da7928ae988, type: 3}
-  m_PrefabInstance: {fileID: 7280210626822874632}
-  m_PrefabAsset: {fileID: 0}
---- !u!256 &-8856726760523896732
-FrictionJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8980115968018036671}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 1224441620344527090}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_BreakAction: 3
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_MaxForce: 5
-  m_MaxTorque: 1
