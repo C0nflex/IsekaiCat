@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pushP = playerInputs.Instance;
         allEnemies = FindObjectsOfType<BasicEnemyBehaviour>();
         sentences = new Queue<string>();
         audioSource = GetComponent<AudioSource>();
