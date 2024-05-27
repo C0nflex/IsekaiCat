@@ -63,7 +63,11 @@ public abstract class playerInputs : MonoBehaviour
     private Vector2 startPos; // for player restart position
 
     private bool isGrounded = false;
-   
+
+    public bool isCatAtEnd = false;
+    public bool isVendingAtEnd = false;
+    public bool isSwordAtEnd = false;
+    public int SoulLevel = 1; //TODO:  temp value 
 
 
     private void Awake()
@@ -91,6 +95,7 @@ public abstract class playerInputs : MonoBehaviour
 
         if (canMove)
         {
+            
             GetInput();
             //CheckStep();
             HandleJump();
@@ -412,6 +417,31 @@ public abstract class playerInputs : MonoBehaviour
         rangedAttackOnCooldown = false;
         if (rangedAttackParticles != null)
             rangedAttackParticles.gameObject.SetActive(true);
+    }
+    public string returnPlayerName()
+    {
+        return gameObject.name;
+    }
+    public void catAtEnd()
+    {
+        isCatAtEnd = true;
+    }
+    public void VedingAtEnd()
+    {
+        isVendingAtEnd = true;
+    }
+    public void swordAtEnd()
+    {
+        isVendingAtEnd = true;
+    }
+
+    public bool isEnoughSoul() //TODO:  temp value 
+    {
+        if(SoulLevel>0)
+        {
+            return true;
+        }
+        return false;
     }
 
 }
