@@ -113,6 +113,8 @@ GameObject:
   - component: {fileID: 9036003108057595880}
   - component: {fileID: 4493407145477092062}
   - component: {fileID: 3374079899849043847}
+  - component: {fileID: 3656219288273850201}
+  - component: {fileID: 973963547118572815}
   m_Layer: 1
   m_Name: FlightBarFill
   m_TagString: Untagged
@@ -177,6 +179,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3656219288273850201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2685783235332885965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043e575b5a48af74290bcaee156ab5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &973963547118572815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2685783235332885965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043e575b5a48af74290bcaee156ab5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4615925277963851934
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,10 +812,6 @@ MonoBehaviour:
   IsFacingRight: 0
   canMove: 0
   rangedAttackParticles: {fileID: 0}
-  isCatAtEnd: 0
-  isVendingAtEnd: 0
-  isSwordAtEnd: 0
-  SoulLevel: 1
   currFloatAmount: 1
   FlightBar: {fileID: 3374079899849043847}
   topCollider: {fileID: 4875048960190541192}
