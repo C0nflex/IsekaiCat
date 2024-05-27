@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject catForSwitch;
     [SerializeField] private GameObject swordForSwitch;
 
-    //private Vector2 startVector = new Vector2(-7.15f, -1.65f);
+    //private Vector2 startVector = new Vector2(-7.15f, -1.65f); // this is the coords for spawn
     private Vector2 startVector = new Vector2(18.86f, 33.97f);
     
     // Start is called before the first frame update
