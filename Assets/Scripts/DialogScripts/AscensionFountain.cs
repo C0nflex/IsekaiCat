@@ -53,6 +53,7 @@ public class AssencionFountain : MonoBehaviour
                     {
                         InteractWithGuyAsVendingMachine();
                     }
+                    
                     // Call a method to perform the action on the flag
                     //InteractWithFlag();
                 }

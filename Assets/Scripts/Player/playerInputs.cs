@@ -92,7 +92,7 @@ public abstract class playerInputs : MonoBehaviour
         wallPos = transform.Find("WallStepCheck").transform;
         startPos = transform.position;
         _cameraFollowObject.NewObjectToFollow(transform);
-        SoulLevel = 20;
+        SoulLevel = 0;
         
     }
 
@@ -213,7 +213,7 @@ public abstract class playerInputs : MonoBehaviour
 
 
 
-    private void PlayerRestartPosition()
+    public void PlayerRestartPosition()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {

@@ -4,7 +4,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Timer : MonoBehaviour
 {
     private TMP_Text timerText;
     enum TimerType {Countdown, Stopwatch}
