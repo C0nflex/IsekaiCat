@@ -67,7 +67,7 @@ public abstract class playerInputs : MonoBehaviour
     public bool isCatAtEnd = false;
     public bool isVendingAtEnd = false;
     public bool isSwordAtEnd = false;
-    public int SoulLevel = 0; //TODO:  temp value 
+    public int SoulLevel = 20; //TODO:  temp value 
     public bool isDead = false;
     //public GameObject isDeadText;
     public GameObject respawnPre;
@@ -465,6 +465,11 @@ public abstract class playerInputs : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void updateStartPos(Vector2 newStartPos)
+    {
+        startPos = newStartPos;
     }
 
 }

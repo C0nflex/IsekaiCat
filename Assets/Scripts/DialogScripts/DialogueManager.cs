@@ -27,8 +27,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject catForSwitch;
     [SerializeField] private GameObject swordForSwitch;
 
-    //private Vector2 startVector = new Vector2(-7.15f, -1.65f); // this is the coords for spawn
-    private Vector2 startVector = new Vector2(18.86f, 33.97f);
+    private Vector2 startVector = new Vector2(-7.15f, -1.65f); // this is the coords for spawn
+    //private Vector2 startVector = new Vector2(18.86f, 33.97f);
     
     // Start is called before the first frame update
     void Start()
@@ -112,6 +112,7 @@ public class DialogueManager : MonoBehaviour
             catForSwitch.SetActive(false);
             vendingMachineForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
+            playerInputs.Instance.updateStartPos(startVector);
             //playerInputs.Instance.EnableMovement();
             //add life force 0
         }

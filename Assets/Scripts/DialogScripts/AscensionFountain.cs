@@ -42,6 +42,7 @@ public class AssencionFountain : MonoBehaviour
                     //if (playerInputs.Instance.isEnoughSoul()==false)
                     if (playerInputs.Instance.SoulLevel<15)
                     {
+                        Debug.Log(playerInputs.Instance.SoulLevel);
                         notEnoughSoulLevelDiag();
                     }
                     else if (playerName == "Cat")
