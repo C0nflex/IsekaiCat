@@ -101,6 +101,17 @@ public class DialogueManager : MonoBehaviour
         {
             enemy.EnableMovement();
         }
+        if(playerInputs.Instance.isCatAtEnd==true && playerInputs.Instance.returnPlayerName()=="Cat") {
+
+        }
+        else if (playerInputs.Instance.isVendingAtEnd == true && playerInputs.Instance.returnPlayerName() == "VendingMachine")
+        {
+            Debug.Log("logics for vending machine player at end");
+        }
+        else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword")
+        {
+
+        }
     }
 
 }
