@@ -90,6 +90,17 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void ResetEnemies()
+    {
+        Destroy(GameManager.Instance.CurrentEnemies);
+        Instantiate(GameManager.Instance.EnemiesSpawnPrefab);
+        allEnemies = FindObjectsOfType<BasicEnemyBehaviour>();
+        foreach (BasicEnemyBehaviour enemy in allEnemies)
+        {
+            enemy.EnableMovement();
+        }
+
+    }
     void EndDialogue()
     {
         allEnemies = FindObjectsOfType<BasicEnemyBehaviour>();
@@ -113,8 +124,9 @@ public class DialogueManager : MonoBehaviour
             vendingMachineForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
             playerInputs.Instance.updateStartPos(startVector);
-            Destroy(GameManager.Instance.CurrentEnemies);
-            Instantiate(GameManager.Instance.EnemiesSpawnPrefab);
+
+            ResetEnemies();
+
             //playerInputs.Instance.EnableMovement();
             //add life force 0
         }
@@ -123,8 +135,7 @@ public class DialogueManager : MonoBehaviour
             vendingMachineForSwitch.SetActive(false);
             swordForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
-            Destroy(GameManager.Instance.CurrentEnemies);
-            Instantiate(GameManager.Instance.EnemiesSpawnPrefab);
+            ResetEnemies();
             //add life force 0
         }
         else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword")
