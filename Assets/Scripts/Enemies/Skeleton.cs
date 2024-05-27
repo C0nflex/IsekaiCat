@@ -54,9 +54,12 @@ public class Skeleton : BasicEnemyBehaviour
     
     protected override void Attack()
     {
-        var ProjectileSpawned = Instantiate(arrow, projectileSpawnPoint.position, Quaternion.identity);
-        Vector3 targetPos = player.transform.position;
-        Vector3 direction = new Vector3(targetPos.x, 0, 0) * ((facingDirection == Direction.Left) ? 1 : -1);
-        ProjectileSpawned.GetComponent<ProjectileManager>().Init(direction, arrowSpeed, attackDamage, arrowKnockback, arrowGravity, facingDirection == Direction.Right ? false : true);
+        if (player != null)
+        {
+            var ProjectileSpawned = Instantiate(arrow, projectileSpawnPoint.position, Quaternion.identity);
+            Vector3 targetPos = player.transform.position;
+            Vector3 direction = new Vector3(targetPos.x, 0, 0) * ((facingDirection == Direction.Left) ? 1 : -1);
+            ProjectileSpawned.GetComponent<ProjectileManager>().Init(direction, arrowSpeed, attackDamage, arrowKnockback, arrowGravity, facingDirection == Direction.Right ? false : true);
+        }
     }
 }

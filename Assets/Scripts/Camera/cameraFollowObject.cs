@@ -33,7 +33,10 @@ public class cameraFollowObject : MonoBehaviour
 
     void Update()
     {
-        transform.position = _playerTransform.position;
+        if (_playerTransform != null)
+        {
+            transform.position = _playerTransform.position;
+        }
     }
 
     public void CallTurn()
