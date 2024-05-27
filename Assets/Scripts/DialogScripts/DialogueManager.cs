@@ -101,7 +101,7 @@ public class DialogueManager : MonoBehaviour
         }
         animator.SetBool("IsOpen", false);
         EventManager.OnTimerStart();
-        pushP.EnableMovement();
+        
         foreach (BasicEnemyBehaviour enemy in allEnemies)
         {
             enemy.EnableMovement();
@@ -111,6 +111,7 @@ public class DialogueManager : MonoBehaviour
             catForSwitch.SetActive(false);
             vendingMachineForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
+            //playerInputs.Instance.EnableMovement();
             //add life force 0
         }
         else if (playerInputs.Instance.isVendingAtEnd == true && playerInputs.Instance.returnPlayerName() == "VendingMachine")
@@ -123,6 +124,7 @@ public class DialogueManager : MonoBehaviour
             EventManager.OnTimerStop();
             endingScreen.SetActive(true);
         }
+        playerInputs.Instance.EnableMovement();
     }
 
 }
