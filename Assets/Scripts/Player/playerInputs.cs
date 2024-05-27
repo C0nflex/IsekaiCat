@@ -67,10 +67,10 @@ public abstract class playerInputs : MonoBehaviour
     public bool isCatAtEnd = false;
     public bool isVendingAtEnd = false;
     public bool isSwordAtEnd = false;
-    public int SoulLevel = 20; //TODO:  temp value 
     public bool isDead = false;
     //public GameObject isDeadText;
     public GameObject respawnPre;
+    public int SoulLevel = 0; //TODO:  temp value 
 
 
     private void Awake()
@@ -97,9 +97,9 @@ public abstract class playerInputs : MonoBehaviour
 
     protected virtual void Update()
     {
+        anim.SetFloat("speed", Mathf.Abs(xInput));
         if (isDead)
         {
-
             //gameObject.SetActive(false);
 
             respawnPre.SetActive(true);
@@ -280,29 +280,7 @@ public abstract class playerInputs : MonoBehaviour
         isGrounded = true;
         anim.SetBool("grounded", true);
     }
-    /*
-    private void CheckStep()
-    {
-        //Tilemap col = GameManager.instance.groundTilemap.GetComponent<Tilemap>();
-        var StepcircleBound = Physics2D.OverlapCircle(stepPos.position, 0.001f, groundMask);
-        var WallCircleBound = Physics2D.OverlapCircle(wallPos.position, 0.001f, groundMask);
-        if (StepcircleBound != null && WallCircleBound ==null && !bounce)
-        {
-            Vector2 currentPosition = transform.position;
-            float zRotation = transform.rotation.eulerAngles.z;
-            var roation = -1;
-            if (zRotation < 0) { roation = 1; }
-            var xmove = 0.2f * roation;
-            Vector2 newPosition = new Vector2(currentPosition.x + xmove, currentPosition.y + 0.3f);
-            transform.position = newPosition;
-            bounce = true;
-        }
-        else
-        {
-            bounce = false;
-        }
-    } */
-
+    
     private void CheckStep()
     {
         var StepcircleBound = Physics2D.OverlapCircle(stepPos.position, 0.01f, groundMasks[0]);
@@ -470,6 +448,10 @@ public abstract class playerInputs : MonoBehaviour
     public void updateStartPos(Vector2 newStartPos)
     {
         startPos = newStartPos;
+    }
+    public void increaseSoulLevel(int level)
+    {
+        SoulLevel += level;
     }
 
 }

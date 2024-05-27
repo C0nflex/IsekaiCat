@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioClip musicClip;
     [SerializeField] private AudioClip GamemusicClip;
+    [SerializeField] public GameObject EnemiesSpawnPrefab;
+    [SerializeField] public GameObject EnemiesContainer;
     public Material Flash;
     private AudioSource audioSource;
 

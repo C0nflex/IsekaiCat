@@ -34,7 +34,6 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         pushP = playerInputs.Instance;
-        allEnemies = FindObjectsOfType<BasicEnemyBehaviour>();
         sentences = new Queue<string>();
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = voiceLines[0];
@@ -93,6 +92,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        allEnemies = FindObjectsOfType<BasicEnemyBehaviour>();
         playerInputs.Instance.DisableMovement();
         robotAnimationController.speed = 0;
         EvilrobotAnimationController.speed = 0;

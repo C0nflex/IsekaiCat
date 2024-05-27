@@ -4839,6 +4839,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
+      propertyPath: attackRadius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 302907844300534971, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 1070156620589337950, guid: 99a92cb989b702345add764335f281db, type: 3}
@@ -4852,11 +4856,11 @@ PrefabInstance:
       objectReference: {fileID: 3041315769043258094}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.52
+      value: 18.86
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.97
+      value: 33.97
       objectReference: {fileID: 0}
     - target: {fileID: 687961414542271542, guid: 49159888fc84eda43bb89bcb1584dff3, type: 3}
       propertyPath: m_LocalPosition.z
