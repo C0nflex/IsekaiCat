@@ -16,6 +16,8 @@ public class VendingMachineInputs : playerInputs
     [SerializeField] private float groundSlamDamage;
     [SerializeField] private float groundSlamRadius;
     [SerializeField] private float groundSlamFallAndHangGravityMultiplayer;
+    [SerializeField] private float TimeUntilDrop;
+    [SerializeField] private Collider2D topCollider;
     public bool isMidSlam = false;
     public bool didstartSlam = false;
     [SerializeField] private Vector2 groundSlamKnockBack;
@@ -47,10 +49,29 @@ public class VendingMachineInputs : playerInputs
     {
         if (!isMidJump)
         {
-            _rigidBody.AddForce(Vector2.up * groundSlamLaunchSpeed, ForceMode2D.Impulse);
+            _rigidBody.velocity = new Vector3(0, groundSlamLaunchSpeed, 0);
+            StartCoroutine(WaitToDropSlam());
+            //_rigidBody.AddForce(Vector2.up * groundSlamLaunchSpeed, ForceMode2D.Impulse);
             didstartSlam = true;
             isMidJump = true;
         }
+    }
+
+    IEnumerator WaitToDropSlam()
+    {
+        yield return new WaitForSeconds(TimeUntilDrop);
+        _rigidBody.velocity = new Vector3(0, -groundSlamLaunchSpeed, 0);
+        _rigidBody.gravityScale = gravityScale * groundSlamFallAndHangGravityMultiplayer;
+        isMidSlam = true;
+    }
+
+
+
+    protected override void Update()
+    {
+        if (didstartSlam && !isMidSlam && Physics2D.OverlapAreaAll(topCollider.bounds.min, topCollider.bounds.max, groundMasks[0]).Length > 0)
+            _rigidBody.gravityScale = 0;
+        base.Update();
     }
 
 
@@ -79,8 +100,7 @@ public class VendingMachineInputs : playerInputs
     {
         if (didstartSlam)
         {
-            _rigidBody.gravityScale = gravityScale * groundSlamFallAndHangGravityMultiplayer;
-            isMidSlam = true;
+
         }
         else
             base.InHangTime();
@@ -90,8 +110,7 @@ public class VendingMachineInputs : playerInputs
     {
         if (didstartSlam)
         {
-            _rigidBody.gravityScale = gravityScale * groundSlamFallAndHangGravityMultiplayer;
-            isMidSlam = true;
+
         }
         else
             base.InFallTime();
