@@ -72,6 +72,10 @@ public abstract class playerInputs : MonoBehaviour
     public GameObject respawnPre;
     public int SoulLevel; //TODO:  temp value 
     public AudioSource audioSource;
+    public AudioClip OgreHit;
+    public AudioClip OgreDie;
+    public AudioClip BatHit;
+    public AudioClip BatDie;
 
     private void Awake()
     {

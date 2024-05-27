@@ -31,6 +31,7 @@ public class SwoardInputs : playerInputs
     public AudioClip swordSlash;
     public AudioClip swordDash;
 
+
     protected override void Start()
     {
         DashTrailRenderer = GetComponent<TrailRenderer>();
@@ -138,6 +139,24 @@ public class SwoardInputs : playerInputs
         {
             if (enemy.tag == "Enemy")
                 enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
+            if (enemy.name == "Ogre")
+            {
+                Health health = enemy.GetComponent<Health>();
+                if(!health._Dead)
+                audioSource.PlayOneShot(OgreHit);
+                else
+                audioSource.PlayOneShot(OgreDie);
+            }
+            else if (enemy.name == "Bat")
+            {
+                Health health = enemy.GetComponent<Health>();
+                if (!health._Dead)
+                    audioSource.PlayOneShot(BatHit);
+                else
+                    audioSource.PlayOneShot(BatDie);
+            }
+
+
         }
         audioSource.PlayOneShot(swordSlash);
         base.BasicAttack();
