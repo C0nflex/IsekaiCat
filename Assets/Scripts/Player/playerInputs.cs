@@ -72,6 +72,11 @@ public abstract class playerInputs : MonoBehaviour
     public GameObject respawnPre;
     public int SoulLevel; //TODO:  temp value 
     public AudioSource audioSource;
+    public AudioClip DeathSound;
+    public AudioClip OgreHit;
+    public AudioClip OgreDie;
+    public AudioClip BatHit;
+    public AudioClip BatDie;
 
     private void Awake()
     {
@@ -375,6 +380,11 @@ public abstract class playerInputs : MonoBehaviour
         Vector3 newPos = transform.position;
         newPos.y += 0.2f;
         transform.position = newPos;
+    }
+
+    private void PlayDeathSound()
+    {
+        audioSource.PlayOneShot(DeathSound);
     }
 
     protected virtual void Jump()
