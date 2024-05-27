@@ -29,7 +29,7 @@ public abstract class BasicEnemyBehaviour : MonoBehaviour
     virtual protected void Die()
     {
         Destroy(gameObject);
-        playerInputs.Instance.increaseSoulLevel(1);
+        
     }
     virtual protected IEnumerator AttackOnCooldown()
     {

@@ -83,9 +83,11 @@ public class Health : MonoBehaviour
             {
                 if (gameObject.tag == "enemy")
                 {
+
                     //GetComponentInParent<EnemyPatrol>().enabled = false;
                 }
             }
+
         }
     }
 
@@ -104,5 +106,7 @@ public class Health : MonoBehaviour
     private void Kill()
     {
         Destroy(gameObject);
+        if (gameObject.GetComponent<playerInputs>() == null)
+            playerInputs.Instance.increaseSoulLevel(1);
     }
 }
