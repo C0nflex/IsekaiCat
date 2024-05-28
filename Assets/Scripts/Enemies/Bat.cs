@@ -76,7 +76,6 @@ public class Bat : BasicEnemyBehaviour
         Vector3 targetPosition = player.transform.position;
         //Vector2 direction = (targetPosition - transform.position).normalized;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, SPEED * Time.deltaTime);
-        Debug.Log(rb.velocity);
         //rb.velocity = direction * SPEED;
         Flip(targetPosition);
     }

@@ -14,8 +14,8 @@ public class PlayerSoulBar : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
+        //SoulBarFill.fillAmount = 1;
         SoulBarFill.fillAmount = (float)playerInputs.Instance.SoulLevel / 10f;
-        Debug.Log(playerInputs.Instance.SoulLevel);
     }
 
 

@@ -8,6 +8,7 @@ namespace LeaderboardCreatorDemo
 
     public class LeaderboardManager : MonoBehaviour
     {
+        private int MaxVal = 2048000000;
         public static LeaderboardManager Instance;
         [SerializeField] private GameObject Entries;
         private List<TextMeshProUGUI> _ranks;
@@ -15,9 +16,9 @@ namespace LeaderboardCreatorDemo
         private List<TextMeshProUGUI> _scores;
         [SerializeField] TMP_InputField inputName;
 
-        private string publicLeaderboardKey = "a499e40388e331aac9a7333bd7913def6add44409682ce7fce075df1cb360628";
+        private string publicLeaderboardKey = "c0d06ae9cc9b66f6df8ce01bc9ff2b7adab814a38dd7e7c05b1c690189cee097";
 
-        private static LeaderboardReference LeaderboardRefrence = new LeaderboardReference("a499e40388e331aac9a7333bd7913def6add44409682ce7fce075df1cb360628");
+        private static LeaderboardReference LeaderboardRefrence = new LeaderboardReference("c0d06ae9cc9b66f6df8ce01bc9ff2b7adab814a38dd7e7c05b1c690189cee097");
 
         private void Awake()
         {
@@ -47,7 +48,7 @@ namespace LeaderboardCreatorDemo
                 {
                     _ranks[i].text = msg[i].Rank.ToString() + ".";
                     _names[i].text = msg[i].Username;
-                    _scores[i].text = msg[i].Score.ToString();
+                    _scores[i].text = msg[i].Extra;
                 }
                 for (int i = leaderboardlength; i < _names.Count; i++)
                 {
@@ -59,9 +60,9 @@ namespace LeaderboardCreatorDemo
             });
         }
 
-        public void SetLeaderboardEntry(string username, int score)
+        public void SetLeaderboardEntry(string username, float scoreForOrderingMechanism ,string Time)
         {
-            LeaderboardCreator.UploadNewEntry(publicLeaderboardKey, username, score, ((msg) =>
+            LeaderboardCreator.UploadNewEntry(publicLeaderboardKey, username, (int)scoreForOrderingMechanism, Time, ((msg) =>
             {
                 GetLeaderboard();
             }), (msg) =>
@@ -70,14 +71,14 @@ namespace LeaderboardCreatorDemo
             });
         }
 
-        public void SubmitScore() => SetLeaderboardEntry(inputName.text, 0);
+        public void SubmitScore() => SetLeaderboardEntry(inputName.text, 2048000000 - 1000 * Timer.Instance.Recordtime +1f, Timer.Instance.RecordTimeInString);
 
         public void UpdateScore() => LeaderboardRefrence.GetPersonalEntry((entry) =>
         {
             if (entry.Rank == 0) //no entry uploaded
-                SetLeaderboardEntry("guest" + Random.Range(1, 1000).ToString(), 0);
+                SetLeaderboardEntry("guest" + Random.Range(1, 1000).ToString(), 2048000000 - 1000 *  Timer.Instance.Recordtime, Timer.Instance.RecordTimeInString);
             else
-                SetLeaderboardEntry(entry.Username, 0);
+                SetLeaderboardEntry(entry.Username, 2048000000 - 1000 * Timer.Instance.Recordtime, Timer.Instance.RecordTimeInString);
         });
     }
 }

@@ -108,7 +108,6 @@ public class SwoardInputs : playerInputs
 
     private void Float()
     {
-        Debug.Log(_rigidBody.velocity);
         if (_rigidBody.velocity.y < floatingSpeed && Physics2D.OverlapAreaAll(topCollider.bounds.min, topCollider.bounds.max, groundMasks[0]).Length == 0)
         {
             _rigidBody.velocity = new Vector3(0, floatingSpeed, 0);

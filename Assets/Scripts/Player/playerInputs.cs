@@ -94,8 +94,8 @@ public abstract class playerInputs : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         _cameraFollowObject = GameManager.Instance._cameraFollowObject;
         _fallSpeedYDampingChangeThreshold = cameraManger.Instance._fallSpeedYDamoingChangeThreshold;
-        stepPos = transform.Find("TileStepCheck").transform;
-        wallPos = transform.Find("WallStepCheck").transform;
+        //stepPos = transform.Find("TileStepCheck").transform;
+        //wallPos = transform.Find("WallStepCheck").transform;
         startPos = transform.position;
         _cameraFollowObject.NewObjectToFollow(transform);
         SoulLevel = 0;

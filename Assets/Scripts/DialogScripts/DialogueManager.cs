@@ -141,7 +141,7 @@ public class DialogueManager : MonoBehaviour
             ResetEnemies();
             //add life force 0
         }
-        else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword" && (playerInputs.Instance.returnPlayerSoul()>10))
+        else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword" && (playerInputs.Instance.returnPlayerSoul()>=10))
         {
             EventManager.OnTimerStop();
             pressRToRestart.SetActive(true);
