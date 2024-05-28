@@ -21,8 +21,9 @@ public class Timer : MonoBehaviour
     {
         Instance = this;
         timerText = GetComponent<TMP_Text>();
-        PlayerPrefs.GetFloat("Recordtime", Recordtime);
-        PlayerPrefs.GetString("RecordtimeInString", RecordTimeInString);
+        StartCoroutine(LoadPlayerPrefsCoroutine());
+        //PlayerPrefs.GetFloat("Recordtime", Recordtime);
+        //PlayerPrefs.GetString("RecordtimeInString", RecordTimeInString);
     }
     private void OnEnable()
     {
@@ -39,7 +40,7 @@ public class Timer : MonoBehaviour
     private void EventManagerOnTimerStart() => isRunning = true;
     private void EventManagerOnTimerStop()
     {
-        if (timeToDisplay > Recordtime)
+        if (timeToDisplay < Recordtime)
         {
             RecordTimeInString = timerText.text;
             Recordtime = timeToDisplay;
@@ -71,4 +72,51 @@ public class Timer : MonoBehaviour
     {
         instructions.SetActive(false); 
     }
+
+    private IEnumerator LoadPlayerPrefsCoroutine() // save time?
+    {
+        // Initialize with default values
+        Recordtime = 0f;
+        RecordTimeInString = "00:00:00";
+
+        while (true)
+        {
+            // Attempt to load the saved values
+            float savedTime = PlayerPrefs.GetFloat("Recordtime", -1f); // Use -1 as a sentinel value
+            string savedTimeString = PlayerPrefs.GetString("RecordtimeInString", null); // Use null as a sentinel value
+
+            if (savedTime != -1f && !string.IsNullOrEmpty(savedTimeString))
+            {
+                // Valid values retrieved from PlayerPrefs
+                Recordtime = savedTime;
+                RecordTimeInString = savedTimeString;
+
+                Debug.Log($"Loaded Record Time: {Recordtime}");
+                Debug.Log($"Loaded Record Time In String: {RecordTimeInString}");
+                break;
+            }
+
+            // Retry after a short delay
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    //could be this and max int:
+    //private IEnumerator LoadPlayerPrefsCoroutine()
+    //{
+    //    while (true)
+    //    {
+    //        Recordtime = PlayerPrefs.GetFloat("Recordtime", 0f);
+    //        RecordTimeInString = PlayerPrefs.GetString("RecordtimeInString", "00:00:00");
+
+    //        if (Recordtime != 0f)
+    //        {
+    //            Debug.Log($"Loaded Record Time: {Recordtime}");
+    //            Debug.Log($"Loaded Record Time In String: {RecordTimeInString}");
+    //            break;
+    //        }
+
+    //        yield return new WaitForSeconds(0.1f); // Retry after a short delay
+    //    }
+    //}
 }
