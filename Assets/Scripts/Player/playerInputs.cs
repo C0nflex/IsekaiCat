@@ -98,7 +98,7 @@ public abstract class playerInputs : MonoBehaviour
         //wallPos = transform.Find("WallStepCheck").transform;
         startPos = transform.position;
         _cameraFollowObject.NewObjectToFollow(transform);
-        SoulLevel = 0;
+        SoulLevel = 10;
         
     }
 

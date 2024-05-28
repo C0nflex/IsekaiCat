@@ -1,3 +1,4 @@
+using LootLocker.Requests;
 using UnityEngine;
 
 public class AssencionFountain : MonoBehaviour
@@ -15,7 +16,19 @@ public class AssencionFountain : MonoBehaviour
     public Dialogue dialogueCat;
     public Dialogue dialogueVending;
     public Dialogue dialogueSword;
+    [SerializeField] private AudioClip GamemusicClip;
+    private AudioSource audioSource;
 
+
+    void Start()
+    {
+        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = GamemusicClip;
+        //EventManager.OnTimerStart();
+        //audioSource.Play();
+
+    }
 
 
     void Update()
@@ -78,19 +91,25 @@ public class AssencionFountain : MonoBehaviour
 
     void InteractWithGuyAsCat()
     {
+        audioSource.Play();
         playerInputs.Instance.catAtEnd();
         FindObjectOfType<DialogueManager>().StartDialogue(dialogueCat);
     }
 
     void InteractWithGuyAsVendingMachine()
     {
+        audioSource.Play();
         playerInputs.Instance.VedingAtEnd();
         FindObjectOfType<DialogueManager>().StartDialogue(dialogueVending);
     }
 
     void InteractWithGuyAsSwordMachine()
     {
+        GameManager.Instance.PauseMusic();
+        
+        audioSource.Play();
         playerInputs.Instance.swordAtEnd();
         FindObjectOfType<DialogueManager>().StartDialogue(dialogueSword);
+        
     }
 }

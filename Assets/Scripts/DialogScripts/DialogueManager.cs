@@ -186,6 +186,7 @@ public class DialogueManager : MonoBehaviour
                 return;
             }
             isTransitionDia = true;
+            GameManager.Instance.PlayMusic3();
             //startRestart.SetActive(true); // neeed a different button
             // add button for restart scene :)
         }
