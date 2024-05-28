@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using LeaderboardCreatorDemo;
 using Dan.Main;
+using LootLocker.Requests;
 
 public class Timer : MonoBehaviour
 {
@@ -58,6 +59,22 @@ public class Timer : MonoBehaviour
             LeaderboardManager.Instance.UpdateScore();
         }
         isRunning = false;
+
+        string memberID = "20";
+        //int leaderboardID = "22616";
+        int score = (int)timeToDisplay;
+
+        LootLockerSDKManager.SubmitScore(memberID, score, "22616", (response) =>
+        {
+            if (response.statusCode == 200)
+            {
+                Debug.Log("Successful");
+            }
+            else
+            {
+                //Debug.Log("failed: " + response.Error);
+            }
+        });
     }
     private void EventManagerOnTimerUpdate(float value) => timeToDisplay += value;
     // Update is called once per frame
