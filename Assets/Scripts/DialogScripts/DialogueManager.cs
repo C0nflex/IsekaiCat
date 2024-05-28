@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-
+    public static DialogueManager Instance;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     private Queue<string> sentences;
@@ -30,13 +30,19 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject fishForSwitch;
     [SerializeField] private GameObject pressRToRestart;
     [SerializeField] private GameObject leaderBoard;
-
+    [SerializeField] public Dialogue catToVending;
+    [SerializeField] public Dialogue vendingToSword;
+    [SerializeField] public Dialogue swordToFish;
+    public static bool IsPrequelDialog { get; set; }
+    private bool isTransitionDia;
     private Vector2 startVector = new Vector2(-7.15f, -1.65f); // this is the coords for spawn
     //private Vector2 startVector = new Vector2(18.86f, 33.97f);
     
     // Start is called before the first frame update
     void Start()
     {
+        isTransitionDia = true;
+        Instance = this;
         pushP = playerInputs.Instance;
         sentences = new Queue<string>();
         audioSource = GetComponent<AudioSource>();
@@ -107,6 +113,12 @@ public class DialogueManager : MonoBehaviour
     }
     void EndDialogue()
     {
+        if(IsPrequelDialog)
+        {
+            PrequelDialog.Instance.EndDialog();
+            animator.SetBool("IsOpen", false);
+            return;
+        }
         allEnemies = FindObjectsOfType<BasicEnemyBehaviour>();
         playerInputs.Instance.DisableMovement();
         robotAnimationController.speed = 0;
@@ -123,12 +135,21 @@ public class DialogueManager : MonoBehaviour
             enemy.EnableMovement();
         }
         if(playerInputs.Instance.isCatAtEnd==true && playerInputs.Instance.returnPlayerName()=="Cat") {
+
             
             catForSwitch.SetActive(false);
             vendingMachineForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
             playerInputs.Instance.updateStartPos(startVector);
+            if (isTransitionDia)
+            {
+                StartDialogue(catToVending);
+                isTransitionDia = false;
+                return;
+            }
 
+
+            isTransitionDia = true;
             ResetEnemies();
 
             //playerInputs.Instance.EnableMovement();
@@ -136,19 +157,35 @@ public class DialogueManager : MonoBehaviour
         }
         else if (playerInputs.Instance.isVendingAtEnd == true && playerInputs.Instance.returnPlayerName() == "VendingMachine")
         {
+            
             vendingMachineForSwitch.SetActive(false);
             swordForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
+            if (isTransitionDia)
+            {
+                StartDialogue(vendingToSword);
+                isTransitionDia = false;
+                return;
+            }
+            isTransitionDia = true;
             ResetEnemies();
             //add life force 0
         }
         else if(playerInputs.Instance.isSwordAtEnd == true && playerInputs.Instance.returnPlayerName() == "Sword" && (playerInputs.Instance.returnPlayerSoul()>=10))
         {
+            
             EventManager.OnTimerStop();
             pressRToRestart.SetActive(true);
             swordForSwitch.SetActive(false);
             fishForSwitch.SetActive(true);
             leaderBoard.SetActive(true);
+            if (isTransitionDia)
+            {
+                StartDialogue(swordToFish);
+                isTransitionDia = false;
+                return;
+            }
+            isTransitionDia = true;
             //startRestart.SetActive(true); // neeed a different button
             // add button for restart scene :)
         }
