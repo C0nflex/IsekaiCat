@@ -1,4 +1,5 @@
 using Dan.Main;
+using LootLocker.Requests;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace LeaderboardCreatorDemo
         private void Awake()
         {
             Instance = this;
+            
         }
 
         private void Start()
@@ -41,22 +43,33 @@ namespace LeaderboardCreatorDemo
 
         public void GetLeaderboard()
         {
-            LeaderboardCreator.GetLeaderboard(publicLeaderboardKey, ((msg) =>
+            string leaderboardKey = "player_leaderboard";
+            int count = 50;
+
+            LootLockerSDKManager.GetScoreList(leaderboardKey, count, 0, (response) =>
             {
-                int leaderboardlength = Mathf.Min(msg.Length, _names.Count);
-                for (int i = 0; i < leaderboardlength; i++)
+                if (response.statusCode == 200)
                 {
-                    _ranks[i].text = msg[i].Rank.ToString() + ".";
-                    _names[i].text = msg[i].Username;
-                    _scores[i].text = msg[i].Extra;
+                    Debug.Log("Successful");
+
+                    int leaderboardlength = Mathf.Min(response.items.Length, _names.Count);
+                    for (int i = 0; i < leaderboardlength; i++)
+                    {
+                        _ranks[i].text = response.items[i].rank.ToString() + ".";
+                        _names[i].text = response.items[i].member_id;
+                        _scores[i].text = response.items[i].score.ToString();
+                    }
+                    for (int i = leaderboardlength; i < _names.Count; i++)
+                    {
+                        _ranks[i].text = (i + 1).ToString() + ".";
+                        _names[i].text = "";
+                        _scores[i].text = "";
+                    }
                 }
-                for (int i = leaderboardlength; i < _names.Count; i++)
+                else
                 {
-                    _ranks[i].text = (i + 1).ToString() + ".";
+                    //Debug.Log("failed: " + response.Error);
                 }
-            }), (msg) =>
-            {
-                Debug.Log("Leaderboard cannot be found");
             });
         }
 

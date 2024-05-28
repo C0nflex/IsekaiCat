@@ -6,6 +6,7 @@ using UnityEngine;
 using LeaderboardCreatorDemo;
 using Dan.Main;
 using LootLocker.Requests;
+using Unity.Mathematics;
 
 public class Timer : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(UpdateRecordTimeFromLeaderboard());
+        //StartCoroutine(UpdateRecordTimeFromLeaderboard());
     }
     private void OnEnable()
     {
@@ -59,8 +60,11 @@ public class Timer : MonoBehaviour
             LeaderboardManager.Instance.UpdateScore();
         }
         isRunning = false;
+        System.Random random = new System.Random();
+        int randomNumber = random.Next(100, 1000);
 
-        string memberID = "20";
+        // Create the member ID string
+        string memberID = "guest_" + randomNumber.ToString();
         //int leaderboardID = "22616";
         int score = (int)timeToDisplay;
 
@@ -75,6 +79,7 @@ public class Timer : MonoBehaviour
                 //Debug.Log("failed: " + response.Error);
             }
         });
+        LeaderboardManager.Instance.GetLeaderboard();
     }
     private void EventManagerOnTimerUpdate(float value) => timeToDisplay += value;
     // Update is called once per frame
@@ -145,32 +150,32 @@ public class Timer : MonoBehaviour
     //        yield return new WaitForSeconds(5f); // Retry after a short delay
     //    }
     //}
-    public IEnumerator UpdateRecordTimeFromLeaderboard()
-    {
-        bool isCompleted = false;
-        LeaderboardCreator.GetLeaderboard(publicLeaderboardKey, (msg) =>
-        {
-            if (msg.Length > 0)
-            {
-                float bestScore = float.MaxValue;
-                if (msg.Length > 0)
-                {
-                    Recordtime = ParseTimeStringToSeconds(msg[0].Extra);
-                    RecordTimeInString = msg[0].Extra;
-                }
-            }
-            isCompleted = true;
-        }, (msg) =>
-        {
-            Debug.Log("Leaderboard cannot be found");
-            isCompleted = true;
-        });
+    //public IEnumerator UpdateRecordTimeFromLeaderboard()
+    //{
+    //    bool isCompleted = false;
+    //    LeaderboardCreator.GetLeaderboard(publicLeaderboardKey, (msg) =>
+    //    {
+    //        if (msg.Length > 0)
+    //        {
+    //            float bestScore = float.MaxValue;
+    //            if (msg.Length > 0)
+    //            {
+    //                Recordtime = ParseTimeStringToSeconds(msg[0].Extra);
+    //                RecordTimeInString = msg[0].Extra;
+    //            }
+    //        }
+    //        isCompleted = true;
+    //    }, (msg) =>
+    //    {
+    //        Debug.Log("Leaderboard cannot be found");
+    //        isCompleted = true;
+    //    });
 
-        while (!isCompleted)
-        {
-            yield return null;
-        }
-    }
+    //    while (!isCompleted)
+    //    {
+    //        yield return null;
+    //    }
+    //}
 
     float ParseTimeStringToSeconds(string timeString)
     {
