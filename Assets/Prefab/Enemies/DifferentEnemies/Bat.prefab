@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1404357302404494005, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1528247879082079953, guid: 23e92067b92ff2f498b4fd92007538e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.765163
@@ -166,3 +170,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32876aa9986ba1f43bb1a602a8b5d062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  DeathSound: {fileID: 8300000, guid: f2a40af0cfddaf345907aa865f3d8f75, type: 3}

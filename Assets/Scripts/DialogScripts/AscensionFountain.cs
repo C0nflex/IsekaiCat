@@ -12,6 +12,7 @@ public class AssencionFountain : MonoBehaviour
     // Distance at which the player can interact with the flag
     public float interactionDistance = 2.0f;
 
+    private Rigidbody2D rb;
     public Dialogue notEnoughSoul;
     public Dialogue dialogueCat;
     public Dialogue dialogueVending;
@@ -35,6 +36,7 @@ public class AssencionFountain : MonoBehaviour
     {
         // Find the player GameObject by tag or layer
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        rb = player.GetComponent<Rigidbody2D>();
         string playerName = player.name;
         
 
@@ -52,6 +54,7 @@ public class AssencionFountain : MonoBehaviour
                 // Check if the 'E' key is pressed
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    rb.velocity = new Vector2(0,0);
                     //if (playerInputs.Instance.isEnoughSoul()==false)
                     if (playerInputs.Instance.returnPlayerSoul()<10)
                     {

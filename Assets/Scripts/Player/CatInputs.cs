@@ -48,6 +48,23 @@ public class CatInputs : playerInputs
         {
             if (enemy.tag == "Enemy")
                 enemy.GetComponent<Health>().TakeDamage(basicAttackDamage, basicAttackKnockback, gameObject);
+
+            if (enemy.name == "Ogre" || enemy.name == "Ogre (1)" || enemy.name == "Ogre (2)" || enemy.name == "Ogre (3)" || enemy.name == "Ogre (4)" || enemy.name == "Ogre (5)" || enemy.name == "Ogre (6)" || enemy.name == "Ogre (7)" || enemy.name == "Ogre (8)" || enemy.name == "Ogre (9)" || enemy.name == "Ogre (10)" || enemy.name == "Ogre (11)" || enemy.name == "Ogre (12)" || enemy.name == "Ogre (13)" || enemy.name == "Ogre (14)" || enemy.name == "Ogre (15)" || enemy.name == "Ogre (16)" || enemy.name == "Ogre (17)" || enemy.name == "Ogre (18)" || enemy.name == "Ogre (19)")
+            {
+                Health health = enemy.GetComponent<Health>();
+                if (!health._Dead)
+                    audioSource.PlayOneShot(OgreHit);
+                else
+                    audioSource.PlayOneShot(OgreDie);
+            }
+            else if (enemy.name == "Bat" || enemy.name == "Bat (1)" || enemy.name == "Bat (2)" || enemy.name == "Bat (3)" || enemy.name == "Bat (4)" || enemy.name == "Bat (5)" || enemy.name == "Bat (6)" || enemy.name == "Bat (7)" || enemy.name == "Bat (8)" || enemy.name == "Bat (9)" || enemy.name == "Bat (10)" || enemy.name == "Bat (11)" || enemy.name == "Bat (12)" || enemy.name == "Bat (13)" || enemy.name == "Bat (14)" || enemy.name == "Bat (15)" || enemy.name == "Bat (16)" || enemy.name == "Bat (17)" || enemy.name == "Bat (18)" || enemy.name == "Bat (19)")
+            {
+                Health health = enemy.GetComponent<Health>();
+                if (!health._Dead)
+                    audioSource.PlayOneShot(BatHit);
+                else
+                    audioSource.PlayOneShot(BatDie);
+            }
         }
         base.BasicAttack();
     }

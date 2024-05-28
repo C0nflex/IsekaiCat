@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hogerHit: {fileID: 8300000, guid: 5700062d8e3864d4babd5c2fe61b06f5, type: 3}
+  DeathSound: {fileID: 8300000, guid: 44f788c5e23923a48ba844fed7453932, type: 3}
 --- !u!95 &7323825019441955554
 Animator:
   serializedVersion: 5
@@ -318,14 +319,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.31
+  m_PlayOnAwake: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 256
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

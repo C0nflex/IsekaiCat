@@ -11,6 +11,7 @@ public class Ogre : BasicEnemyBehaviour
     private Animator animator;
     [SerializeField] private AudioClip hogerHit;
     private AudioSource audioSource;
+  
     protected override void Attack()
     {
         if (player != null)
@@ -59,4 +60,6 @@ public class Ogre : BasicEnemyBehaviour
     {
         base.Update();
     }
+
+ 
 }
