@@ -29,6 +29,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject swordForSwitch;
     [SerializeField] private GameObject fishForSwitch;
     [SerializeField] private GameObject pressRToRestart;
+    [SerializeField] private GameObject leaderBoard;
 
     private Vector2 startVector = new Vector2(-7.15f, -1.65f); // this is the coords for spawn
     //private Vector2 startVector = new Vector2(18.86f, 33.97f);
@@ -147,6 +148,7 @@ public class DialogueManager : MonoBehaviour
             pressRToRestart.SetActive(true);
             swordForSwitch.SetActive(false);
             fishForSwitch.SetActive(true);
+            leaderBoard.SetActive(true);
             //startRestart.SetActive(true); // neeed a different button
             // add button for restart scene :)
         }
