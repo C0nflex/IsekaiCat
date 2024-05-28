@@ -149,6 +149,7 @@ public class DialogueManager : MonoBehaviour
             swordForSwitch.SetActive(false);
             fishForSwitch.SetActive(true);
             leaderBoard.SetActive(true);
+            GameManager.Instance.PlayMusic3();
             //startRestart.SetActive(true); // neeed a different button
             // add button for restart scene :)
         }

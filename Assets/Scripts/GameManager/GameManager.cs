@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioClip musicClip;
     [SerializeField] private AudioClip GamemusicClip;
+    [SerializeField] private AudioClip EndingMusic;
     [SerializeField] public GameObject EnemiesSpawnPrefab;
     [SerializeField] public GameObject CurrentEnemies;
     public Material Flash;
@@ -68,6 +69,11 @@ public class GameManager : MonoBehaviour
     public void PlayMusic2()
     {
         PlayMusicClip(GamemusicClip);
+    }
+
+    public void PlayMusic3()
+    {
+        PlayMusicClip(EndingMusic);
     }
 
     public void PauseMusic()
