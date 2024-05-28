@@ -34,7 +34,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] public Dialogue vendingToSword;
     [SerializeField] public Dialogue swordToFish;
     public static bool IsPrequelDialog { get; set; }
-    private bool isTransitionDia;
+    private bool isTransitionDia = true;
     private Vector2 startVector = new Vector2(-7.15f, -1.65f); // this is the coords for spawn
     //private Vector2 startVector = new Vector2(18.86f, 33.97f);
     
@@ -103,7 +103,7 @@ public class DialogueManager : MonoBehaviour
     private void ResetEnemies()
     {
         Destroy(GameManager.Instance.CurrentEnemies);
-        Instantiate(GameManager.Instance.EnemiesSpawnPrefab);
+        GameManager.Instance.CurrentEnemies= Instantiate(GameManager.Instance.EnemiesSpawnPrefab);
         allEnemies = FindObjectsOfType<BasicEnemyBehaviour>();
         foreach (BasicEnemyBehaviour enemy in allEnemies)
         {
@@ -113,6 +113,11 @@ public class DialogueManager : MonoBehaviour
     }
     void EndDialogue()
     {
+        //if (!isTransitionDia)
+        //{
+        //    isTransitionDia = true;
+        //    return;
+        //}
         if(IsPrequelDialog)
         {
             PrequelDialog.Instance.EndDialog();
@@ -141,15 +146,15 @@ public class DialogueManager : MonoBehaviour
             vendingMachineForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
             playerInputs.Instance.updateStartPos(startVector);
-            if (isTransitionDia)
-            {
-                StartDialogue(catToVending);
-                isTransitionDia = false;
-                return;
-            }
+            //if (isTransitionDia)
+            //{
+            //    isTransitionDia = false;
+            //    StartDialogue(catToVending);
+                
+            //}
 
 
-            isTransitionDia = true;
+            //isTransitionDia = true;
             ResetEnemies();
 
             //playerInputs.Instance.EnableMovement();
@@ -161,13 +166,13 @@ public class DialogueManager : MonoBehaviour
             vendingMachineForSwitch.SetActive(false);
             swordForSwitch.SetActive(true);
             playerInputs.Instance.transform.position = startVector;
-            if (isTransitionDia)
-            {
-                StartDialogue(vendingToSword);
-                isTransitionDia = false;
-                return;
-            }
-            isTransitionDia = true;
+            //if (isTransitionDia)
+            //{
+            //    isTransitionDia = false;
+            //    StartDialogue(vendingToSword);
+                
+            //}
+            //isTransitionDia = true;
             ResetEnemies();
             //add life force 0
         }
@@ -179,13 +184,13 @@ public class DialogueManager : MonoBehaviour
             swordForSwitch.SetActive(false);
             fishForSwitch.SetActive(true);
             leaderBoard.SetActive(true);
-            if (isTransitionDia)
-            {
-                StartDialogue(swordToFish);
-                isTransitionDia = false;
-                return;
-            }
-            isTransitionDia = true;
+            //if (isTransitionDia)
+            //{
+            //    isTransitionDia = false;
+            //    StartDialogue(swordToFish);
+                
+            //}
+            //isTransitionDia = true;
             GameManager.Instance.PlayMusic3();
             //startRestart.SetActive(true); // neeed a different button
             // add button for restart scene :)
